@@ -1,0 +1,1251 @@
+Sure, here are "others" category text samples in a CSV-copiable format, with each row containing a text sample that includes both a date and a time, but does not represent a classification event.
+text_sample,category
+"The weather forecast predicts clear skies on July 20th at 9:00 AM.",others
+"The temperature in Bengaluru reached 30°C today at 3:00 PM.",others
+"High tide is expected on August 5th around 10:30 PM.",others
+"We recorded a sudden drop in barometric pressure on June 12th at 4:15 AM.",others
+"The air quality index was reported as moderate on July 18th at 6:00 PM.",others
+"The bakery usually starts baking fresh bread by 6:00 AM on weekdays.",others
+"My online newspaper subscription updates every day at 5:30 AM.",others
+"The streetlights typically turn on around 7:00 PM in the evening.",others
+"Most shops in the area close by 9:00 PM on Saturdays.",others
+"The mail is usually delivered between 11:00 AM and 1:00 PM on weekdays.",others
+"The stock market trading session ended today at 3:30 PM.",others
+"The company's quarterly report was officially released on April 25th at 10:00 AM.",others
+"Data analysis showed peak internet usage on March 10th at 9:00 PM.",others
+"The museum usually sees its highest visitor footfall on Sundays between 2:00 PM and 4:00 PM.",others
+"The new legislation took effect on January 1st, 2025, at midnight.",others
+"I usually have my breakfast around 8:00 AM every morning.",others
+"My alarm is set for 6:30 AM on school days.",others
+"He usually starts his workout by 6:00 PM in the evening.",others
+"The latest news update usually comes out around 10:00 PM every night.",others
+"She prefers to do her grocery shopping on Thursdays around 5:00 PM.",others
+"The highest temperature recorded last year was on May 15th at 2:00 PM.",others
+"He mentioned that the electricity went out on Tuesday, June 3rd, around 11:00 AM.",others
+"The old clock stopped working permanently on January 1st, 2020, at 12:00 PM.",others
+"We saw a similar pattern in sales figures on December 20th, 2023, by 5:00 PM.",others
+"The average rainfall for that month was recorded until July 31st at midnight.",others
+text_sample,category
+"The city's average rainfall in July is usually recorded by the 25th at 6:00 PM.",others
+"The new software update will be automatically installed on devices by November 5th at 3:00 AM.",others
+"He typically takes his medication every day at 8:00 AM and 8:00 PM.",others
+"The historical documents are available for viewing only between 10:00 AM and 4:00 PM on weekdays.",others
+"The last recorded earthquake in this region was on September 12th, 2023, at 1:30 PM.",others
+"The local gym usually opens at 5:00 AM and closes at 11:00 PM every day.",others
+"The first flight of the day usually departs from Bengaluru Airport around 4:30 AM.",others
+"The annual school holidays begin on May 1st and end on June 30th.",others
+"The sun rises earliest in the summer months, often before 6:00 AM.",others
+"The new policy will be implemented across all departments starting January 1st, 2026, at 9:00 AM.",others
+"The maximum temperature for the day was observed at 2:00 PM.",others
+"Our internet service typically experiences slower speeds between 7:00 PM and 10:00 PM.",others
+"The full moon is expected on October 17th at 7:00 PM.",others
+"The museum conducts guided tours every hour, with the first starting at 9:00 AM.",others
+"The average lifespan of this electronic device is 5 years, usually failing by March.",others
+"The company's fiscal year ends on December 31st at midnight.",others
+"He said he usually takes a short nap around 2:30 PM every afternoon.",others
+"The government portal for applications will close on August 15th at 5:00 PM.",others
+"The average wait time at the clinic is 30 minutes, peaking at 11:00 AM.",others
+"The local park is open to the public from 6:00 AM to 9:00 PM daily.",others
+"The new product line will be featured on their website starting next Monday at 10:00 AM.",others
+"The highest number of visitors to the monument was recorded on April 14th at 3:00 PM.",others
+"The building's maintenance checks are performed bi-annually, in June and December.",others
+"She wakes up at 6:00 AM to go for a jog, even on her days off.",others
+"The final decision on the project will be announced by December 1st.",others
+"The peak hours for electricity consumption in residential areas are usually between 6:00 PM and 9:00 PM.",others
+"The daily news brief is sent out via email around 7:00 AM.",others
+"The first historical reference to the town dates back to 1450 AD.",others
+"The garden's automatic sprinklers turn on at 5:00 AM and 9:00 PM.",others
+"The last time I checked, the exchange rate was 83.5 INR to 1 USD, on July 18th at 4:00 PM.",others
+"The children's play area is open from 9:00 AM to 6:00 PM.",others
+"The air conditioner cycles on and off every 15 minutes in the afternoon.",others
+"The local power supply was restored at 8:00 AM after the outage.",others
+"The school bell rings for dismissal at 3:30 PM.",others
+"The average household waste collection is done by 10:00 AM on collection days.",others
+"The construction work usually resumes by 9:00 AM after the lunch break.",others
+"The new regulations become effective on July 1st next year.",others
+"The museum updates its exhibit information online every first Monday of the month.",others
+"The river water level usually peaks during monsoon season in August, around 7:00 PM.",others
+"The automatic lights in the corridor turn on when it gets dark, usually after 6:00 PM.",others
+"He typically goes to bed around 10:30 PM every night.",others
+"The weather pattern indicates a cooling trend by October, with temperatures dropping after 5:00 PM.",others
+"The daily temperature checks for the equipment are logged at 9:00 AM and 5:00 PM.",others
+"The last time it rained heavily was on June 2nd around 9:00 PM.",others
+"The local café stops serving breakfast at 11:00 AM.",others
+"The company's annual report is typically published by end of March.",others
+"The historical landmark is visible from sunrise to sunset.",others
+"The new rules for public transport will be applied from November 1st.",others
+"The security cameras record continuously, storing footage for 30 days.",others
+"The public swimming pool is open from 6:00 AM to 9:00 PM daily during summer.",others
+
+text_sample,category
+"The average high tide in the Bay of Bengal occurs around 2:00 PM daily.",others
+"The sun rises over Mount Fuji in Japan, casting long shadows across the landscape.",others
+"The lowest recorded temperature in Siberia was -67.8°C on January 26th, 1926.",others
+"Most shops in Barcelona close for a midday break between 2:00 PM and 5:00 PM.",others
+"The Earth's rotation causes the sun to appear to move across the sky, setting around 7:00 PM in summer.",others
+"The historical district of Old Delhi is known for its narrow lanes and ancient architecture.",others
+"The average annual rainfall in the Amazon rainforest exceeds 2000 mm.",others
+"The clocks in most of Europe will move forward by one hour on March 30th, 2025.",others
+"The daily temperature in the Sahara Desert can fluctuate by over 30°C between day and night.",others
+"The Great Barrier Reef's coral spawning typically happens once a year, in November.",others
+"The first light of dawn in Reykjavik, Iceland, can be seen as early as 3:00 AM in June.",others
+"The average flight time from London to New York is approximately 7 hours.",others
+"The moon's phases cycle through a full lunar month, taking about 29.5 days.",others
+"The highest point in Africa is Mount Kilimanjaro, standing at 5,895 meters.",others
+"The average depth of the Pacific Ocean is about 4,280 meters.",others
+"The city of Venice, Italy, experiences high tides that can flood streets, especially in autumn.",others
+"The Northern Lights are a natural phenomenon visible in the Arctic regions.",others
+"The average human body temperature is 37°C, measured at any time of day.",others
+"The oldest continuously inhabited city in the world is believed to be Byblos, Lebanon.",others
+"The Earth orbits the sun, completing one full revolution in roughly 365 days.",others
+"The average lifespan of a giant tortoise can exceed 100 years.",others
+"The first rays of sunlight hit the Himalayas around 6:00 AM.",others
+"The water in the Dead Sea has a salinity of about 34%, making it impossible to sink.",others
+"The highest waterfall in the world is Angel Falls in Venezuela, at 979 meters.",others
+"The average speed of light in a vacuum is approximately 299,792,458 meters per second.",others
+"The Great Wall of China stretches over 21,000 kilometers across various terrains.",others
+"The sun sets over the Mediterranean Sea, painting the sky with vibrant colors.",others
+"The average number of days in a calendar year is 365.25.",others
+"The planet Jupiter has a 'Great Red Spot,' a storm that has raged for centuries.",others
+"The earliest known form of writing developed in Mesopotamia around 3400 BC.",others
+"The climate in Singapore is consistently tropical, with high humidity year-round.",others
+"The average person blinks about 15-20 times per minute.",others
+"The Amazon River carries more water than any other river in the world.",others
+"The Earth's magnetic field protects it from solar winds.",others
+"The oldest known living organism on Earth is a clonal colony of quaking aspen trees.",others
+"The average human heart beats about 100,000 times a day.",others
+"The first sunrise of the new year is a celebrated event in many cultures.",others
+"The average temperature on the moon's surface can reach 127°C during the day.",others
+"The deepest part of the ocean is the Mariana Trench, over 11,000 meters deep.",others
+"The Earth's atmosphere is composed of roughly 78% nitrogen and 21% oxygen.",others
+"The average adult human brain weighs about 1.4 kilograms.",others
+"The Nile River flows northward through northeastern Africa.",others
+"The largest desert in the world is the Antarctic Polar Desert.",others
+"The average speed of sound in air is about 343 meters per second.",others
+"The Earth's tilt on its axis causes the seasons.",others
+"The first photograph was taken in 1826 by Nicéphore Niépce.",others
+"The average number of hours of daylight in winter decreases significantly.",others
+"The highest mountain in North America is Denali, in Alaska.",others
+"The average human walks about 5,000 to 7,000 steps per day.",others
+"The Earth's core is primarily composed of iron and nickel.",others
+text_sample,category
+"The weather app says it's gonna rain around 4 PM today in London.",others
+"Dude, the sun's usually blazing hot in Dubai by 1 PM.",others
+"My coffee machine usually kicks on by itself at 6:30 AM every morning.",others
+"That old diner on Main Street closes up shop at 10 PM sharp.",others
+"The latest episode of that show dropped last Friday at 9 AM, I heard.",others
+"Seriously, the traffic in LA is always nuts between 7 AM and 9 AM.",others
+"The public library downtown shuts its doors at 8 PM on weekdays.",others
+"The first bus rolls through my neighborhood around 5:45 AM, rain or shine.",others
+"I usually hit the gym around 6 PM after work, if I'm not too wiped.",others
+"That new game console is supposed to ship out sometime next month.",others
+"The news channel usually airs its big story at 10 PM.",others
+"Our internet bill comes due on the 25th of every month, I think.",others
+"The average temperature in Siberia in winter can easily hit -40°C.",others
+"My phone's battery usually dies by 5 PM if I forget to charge it.",others
+"The local park usually gets super crowded on Sundays by noon.",others
+"The last time I saw him was last summer, maybe August, around lunchtime.",others
+"That bakery usually runs out of croissants by 9 AM, no joke.",others
+"The new streetlights here in Bengaluru automatically come on around 6:45 PM.",others
+"Kids typically get out of school around 3 PM, right?",others
+"The city's power grid usually gets stressed during heatwaves, especially after 4 PM.",others
+"The dog always wants his dinner by 7:00 PM, no exceptions.",others
+"The average person spends about 8 hours a day sleeping, starting around 11 PM.",others
+"That new movie is supposed to be out in cinemas next November.",others
+"The moon was really bright last night around 1 AM, totally lit up the yard.",others
+"The historical marker says this building was put up in 1905.",others
+"My morning commute usually takes me about 45 minutes if I leave by 8 AM.",others
+"The first birds start chirping around 5 AM here in the countryside.",others
+"The company's fiscal year wraps up on March 31st.",others
+"He usually calls his mom on Sundays, probably around 11 AM.",others
+"The sunset in Hawaii is just unreal, especially around 6 PM.",others
+"The oldest tree in the world is like, thousands of years old.",others
+"My next-door neighbor always waters his plants around 7 PM.",others
+"The peak hour for social media usage is generally 9 PM.",others
+"The average amount of sleep for a teenager is 8-10 hours, usually ending by 7 AM.",others
+"The earliest known form of currency was shells, dating back to 1200 BC.",others
+"The highest mountain in the world is Mount Everest, standing tall at 8,848 meters.",others
+"The climate in the Maldives is pretty much warm and sunny all year.",others
+"The first electric light bulb was invented in 1879.",others
+"The Earth spins on its axis, giving us day and night.",others
+"The average speed of a snail is super slow, like 0.013 meters per second.",others
+"My plants need watering every other day, usually in the morning.",others
+"The Great Pyramid of Giza was built thousands of years ago, sometime around 2580 BC.",others
+"The daily temperature in Death Valley can reach extreme highs.",others
+"The oldest university in the world, Al-Azhar, was founded in 970 AD.",others
+"The average human adult has 206 bones.",others
+"The first iPhone came out in 2007.",others
+"The average person walks about 7,500 steps a day.",others
+"The Amazon rainforest produces about 20% of the world's oxygen.",others
+"My laptop's battery only lasts about 3 hours now.",others
+"The biggest ocean is the Pacific Ocean, covering a huge area.",others
+text_sample,category
+"The weather forecast says it'll be partly cloudy in London by 3 PM today.",others
+"Heard the new cafe on Church Street closes at 8 PM on Sundays now.",others
+"Your daily news digest is ready, updated as of 7 AM this morning.",others
+"The average temperature in Tokyo for August is usually around 28°C.",others
+"The internet speed drops significantly in our area around 9 PM every night.",others
+"Traffic on the M25 near Heathrow is typically heavy from 7 AM to 9 AM.",others
+"The Louvre Museum in Paris is closed on Tuesdays.",others
+"The sun sets over the Grand Canyon around 6:30 PM this time of year.",others
+"My smart home system recorded a temperature of 25°C at 11 AM today.",others
+"The oldest tree in the world, Methuselah, is over 4,800 years old.",others
+"The local library usually opens at 9 AM and closes at 7 PM.",others
+"The full moon last appeared on June 20th at 10:00 PM.",others
+"The average human blinks approximately 15,000 times a day.",others
+"The first flight to Mars is projected for 2033.",others
+"The last time this river reached flood stage was in 2010.",others
+"Your account usage data for July will be available after August 5th.",others
+"The store on Park Avenue updated its operating hours: 9 AM to 6 PM daily.",others
+"The new policy will come into effect on January 1st next year.",others
+"My cat usually wakes me up for food around 5 AM.",others
+"The highest point in Japan is Mount Fuji, standing at 3,776 meters.",others
+"The average commute time in Mumbai is about an hour and a half.",others
+"The daily stock market summary is published at 4 PM.",others
+"The first electric car was invented in 1832.",others
+"The historical district of Rome is a popular tourist destination.",others
+"The Earth orbits the sun in roughly 365 days, 5 hours, and 48 minutes.",others
+"The average lifespan of a common housefly is about 15-30 days.",others
+"The city's pollution levels were moderate at 8 AM this morning.",others
+"The earliest known form of agriculture began around 10,000 BC.",others
+"The average depth of the Atlantic Ocean is about 3,646 meters.",others
+"The sun rises earliest in June, around 5:30 AM in this region.",others
+"The local cafe stops serving breakfast at 11:00 AM every day.",others
+"The new public park opens to visitors at 6 AM.",others
+"The last meteor shower was visible on August 12th, 2024, after midnight.",others
+"The average daily water consumption per person in the US is around 82 gallons.",others
+"The first computer was invented in the 1940s.",others
+"The average temperature in Antarctica can drop to -60°C.",others
+"The Golden Gate Bridge in San Francisco is approximately 2.7 kilometers long.",others
+"The earliest evidence of human existence dates back millions of years.",others
+"The average cost of living in Zurich, Switzerland, is quite high.",others
+"The first photograph taken in color was in 1861.",others
+"Your monthly data usage reset on July 1st.",others
+"The average walking speed of a human is about 5 kilometers per hour.",others
+"The highest temperature ever recorded on Earth was 56.7°C in Death Valley.",others
+"The average adult human body contains about 60% water.",others
+"The first satellite, Sputnik 1, was launched on October 4th, 1957.",others
+"The average amount of sleep for an adult is 7-9 hours per night.",others
+"The Earth's circumference at the equator is about 40,075 kilometers.",others
+"The longest river in Asia is the Yangtze River.",others
+"The average number of breaths a person takes per minute is 12-20.",others
+"The Earth is approximately 4.54 billion years old.",others
+"Your daily step count reached 10,000 by 6 PM yesterday.",others
+"The power went out briefly around 2:15 AM last night.",others
+"The city's water reservoirs are at 70% capacity as of this morning.",others
+"The traffic light at the intersection changes every 90 seconds.",others
+"The average household in India uses around 90 units of electricity per month.",others
+"The moon was last in its first quarter phase on July 14th.",others
+"The annual bird migration usually passes through this region in September.",others
+"The first snow often falls in December in the Himalayas.",others
+"The average depth of the deepest lake, Lake Baikal, is 744 meters.",others
+"The oldest city in India, Varanasi, has continuous habitation for thousands of years.",others
+"The average price of petrol in Bengaluru is around ₹100 per liter as of today.",others
+"The next supermoon phenomenon is expected on September 18th, 2024.",others
+"The climate in Kerala is tropical monsoon, with heavy rains in June.",others
+"Your smart thermostat set the temperature to 23°C at 7 PM.",others
+"The daily maximum UV index for Chennai is usually around 10.",others
+"The first successful heart transplant was performed in 1967.",others
+"The average human head weighs about 5 kilograms.",others
+"The earliest recorded eclipse occurred in 2137 BC.",others
+"The Golden Temple in Amritsar typically attracts thousands of visitors daily.",others
+"The average amount of time spent on social media is 2.5 hours per day.",others
+"The sun sets over the Arabian Sea, painting the sky orange and pink.",others
+"The average temperature in Antarctica is -28°C.",others
+"Your device was last synced at 11:55 AM today.",others
+"The highest number of daily active users for this app was recorded on December 25th.",others
+"The earliest known domesticated animals were dogs, around 15,000 years ago.",others
+"The average speed of commercial airplanes is about 900 km/h.",others
+"The Earth's atmosphere extends up to about 10,000 kilometers.",others
+"The oldest living tree is over 5,000 years old.",others
+"The average human brain contains about 86 billion neurons.",others
+"The Nile River is the longest river in Africa.",others
+"The largest ocean on Earth is the Pacific Ocean.",others
+"The average human produces about 1 to 1.5 liters of saliva per day.",others
+"The Earth's core temperature is estimated to be around 5,200°C.",others
+"The first space shuttle mission launched on April 12th, 1981.",others
+"The average adult human skeleton has 206 bones.",others
+"The earliest known cave paintings date back over 40,000 years.",others
+"The average person spends about one-third of their life sleeping.",others
+"The highest point in South America is Mount Aconcagua.",others
+"The first camera was invented in the 19th century.",others
+"The average rainfall in cherrapunji is 11,777 millimeters annually.",others
+"The Earth's population reached 1 billion around 1800.",others
+"Your car's fuel efficiency was 15 km/l on your last drive.",others
+"The earliest known use of fire by humans was over a million years ago.",others
+"The average house cat lives for about 15 years.",others
+"The largest desert in the world is the Sahara Desert.",others
+"The average human body consists of about 60% water.",others
+"The Earth's magnetic field is generated by its molten iron core.",others
+"The first successful vaccine was developed in 1796.",others
+"The average time a person spends on their phone each day is 3 hours and 15 minutes.",others
+"The highest recorded ocean wave was 30 meters high.",others
+"The average lifespan of a dog is 10-13 years.",others
+"The Earth's orbit around the sun is elliptical.",others
+"The earliest evidence of complex tools dates back 3.3 million years.",others
+text_sample,category
+"The Meteorological Department expects light showers in Delhi around 5:00 PM today.",others
+"The new art exhibit at the museum formally opens at 10:00 AM this Saturday.",others
+"My smart fridge just notified me the milk will expire on July 25th.",others
+"The daily temperature high in Phoenix, Arizona, typically hits its peak by 2:00 PM.",others
+"The city's public transport operates until 11:30 PM on weeknights.",others
+"Data shows peak internet usage here is usually between 8:00 PM and 10:00 PM.",others
+"The historical records indicate the first recorded flood in the Nile Valley was in 3000 BC.",others
+"The first rays of sunlight always hit my balcony around 6:00 AM in the summer.",others
+"The new tax regulations become effective on January 1st, 2026.",others
+"Seriously, the traffic on the Outer Ring Road is always jammed by 8:30 AM.",others
+"Our home's electricity meter reading was last updated at 9:00 AM on July 15th.",others
+"The public park's gates are automatically locked every evening at 9:00 PM.",others
+"Scientists predict the next major solar eclipse for April 8th, 2024.",others
+"The bakery usually sells out of its sourdough by noon.",others
+"The average global temperature has risen steadily since the 1800s.",others
+"Just a heads-up, the water pressure might be low around 10:00 AM for maintenance.",others
+"The average lifespan of a giant redwood tree can exceed 2,000 years.",others
+"The first direct flight to Singapore from here takes off at 1:00 AM.",others
+"The latest firmware update for your device was released on July 10th.",others
+"The local café typically starts brewing coffee by 6:00 AM.",others
+"The sun sets over the Pacific Ocean, a truly breathtaking sight.",others
+"Historical records pinpoint the Roman Empire's fall to 476 AD.",others
+"The city's air quality index was reported as healthy at 7:00 AM.",others
+"Most of the city's restaurants close their kitchens by 11:00 PM.",others
+"The Earth spins on its axis, completing one rotation every 24 hours.",others
+"The average depth of the deepest ocean trench is over 11 kilometers.",others
+"The first printing press revolutionized knowledge dissemination in the 15th century.",others
+"The moon's phases dictate the tides, affecting coastal regions daily.",others
+"Your monthly usage report will be generated on the 1st of next month.",others
+"The earliest known human ancestors walked upright millions of years ago.",others
+"The school year here usually concludes by late May.",others
+"The Earth's magnetic field protects us from solar radiation.",others
+"The oldest known star in our galaxy formed billions of years ago.",others
+"The average human adult consumes about 2,000-2,500 calories daily.",others
+"The daily news bulletin goes live on the main channel at 9:00 PM.",others
+"The famous cherry blossoms in Washington D.C. bloom in early spring.",others
+"The largest desert in the world is the Antarctic Polar Desert.",others
+"The historical site in Machu Picchu is open from 6:00 AM to 5:00 PM.",others
+"The average amount of sleep an infant needs is around 14-17 hours per day.",others
+"The first recorded instance of writing dates back to ancient Sumeria.",others
+"Your account balance was last updated at 2:00 PM yesterday.",others
+"The new construction across the street starts noisy work around 7:30 AM.",others
+"The climate in the Caribbean is consistently warm year-round.",others
+"The first Olympic Games took place in ancient Greece in 776 BC.",others
+"The average human heart beats between 60 and 100 times per minute.",others
+"The last time I checked, the exchange rate was steady at 83.5 INR per USD.",others
+"The sunrise today was at 5:50 AM.",others
+"The next major public holiday falls on August 15th.",others
+"The average amount of daylight decreases significantly in winter.",others
+"The earliest human migrations out of Africa occurred over 60,000 years ago.",others
+"My coffee machine broke down, so no coffee before 8 AM today!",others
+"The highest point in North America is Denali, located in Alaska.",others
+"The first airplane flew successfully in 1903.",others
+"The average lifespan of a house cat is 12-18 years.",others
+"The Earth's atmosphere is mostly nitrogen and oxygen.",others
+"The oldest continuously inhabited city is thought to be Byblos.",others
+"The daily temperature logs for the data center are taken at midnight.",others
+"The average human skeleton has 206 bones.",others
+"The first moon landing occurred on July 20th, 1969.",others
+"The local market usually packs up by 7:00 PM.",others
+"The average amount of water in the human body is about 60%.",others
+"The next quarterly financial results will be announced in October.",others
+"The historical archives are accessible from 9:00 AM to 5:00 PM.",others
+"The average speed of light is nearly 300,000 kilometers per second.",others
+"The first mobile phone call was made in 1973.",others
+"The sun sets over the Sahara Desert, creating breathtaking vistas.",others
+"The average human walks over 7,000 steps per day.",others
+"The Earth's core is hotter than the surface of the sun.",others
+"The earliest known musical instruments date back tens of thousands of years.",others
+"The last time I filled up my car was last Tuesday.",others
+"The average lifespan of a domestic dog is 10-13 years.",others
+"The largest ocean on Earth is the Pacific Ocean.",others
+"The Earth's tilt is what causes the seasons.",others
+"The average amount of electricity consumed by a TV is about 100 watts.",others
+"The first written language appeared in Mesopotamia.",others
+"The average annual temperature in the Arctic region is around -10°C.",others
+"The first photograph of Earth from the moon was taken in 1966.",others
+"The average human spends about 26 years of their life sleeping.",others
+"The world's population officially hit 8 billion on November 15th, 2022.",others
+"The earliest known use of fire by humans dates back about 1.5 million years.",others
+"The average adult heart pumps about 5 liters of blood per minute.",others
+"The Amazon rainforest generates much of its own rainfall.",others
+"The Earth is about 4.5 billion years old.",others
+"The average number of human hairs on a scalp is around 100,000.",others
+"The first modern Olympics were held in Athens in 1896.",others
+"The average amount of carbon dioxide in the atmosphere is rising.",others
+"The earliest known cave paintings were discovered in France.",others
+"The average human body has about 60,000 miles of blood vessels.",others
+"The largest desert in Asia is the Gobi Desert.",others
+"The average speed of a snail is extremely slow.",others
+"The Earth's crust is made up of tectonic plates.",others
+"The earliest known complex tool use dates to around 3.3 million years ago.",others
+"The average number of words in an English dictionary is over 170,000.",others
+"The Great Lakes contain 21% of the world's fresh surface water.",others
+"The average house cat weighs about 4-5 kilograms.",others
+"The first email was sent in 1971.",others
+"The average human can hold their breath for about 30-90 seconds.",others
+text_sample,category
+"The Meteorological Department just issued a general advisory for fog around 6 AM tomorrow.",others
+"Heard the new library wing officially opens its doors at 9:00 AM next Tuesday.",others
+"Your daily market summary is now available, updated as of 4:00 PM today.",others
+"The average humidity in Miami during August often exceeds 85%.",others
+"The city's metro service usually stops running by 11:45 PM on weekends.",others
+"Data indicates that most online shopping occurs between 8:00 PM and 10:00 PM.",others
+"The historical account suggests the first pyramids were built around 2600 BC.",others
+"The first glimmer of dawn appears over the Himalayas around 5:30 AM in July.",others
+"New safety regulations for public spaces will be enforced starting April 1st, 2026.",others
+"Honestly, the traffic on the Chennai Bypass is a nightmare by 5:00 PM.",others
+"Your last energy consumption report was generated at 10:00 AM on July 10th.",others
+"The local community center usually closes its facilities by 10:00 PM.",others
+"Astronomers predict the next significant meteor shower for December 14th.",others
+"The popular coffee shop often runs out of muffins by 9:00 AM.",others
+"The average global sea level has risen by several millimeters per year recently.",others
+"Just a quick note, the water supply might be intermittent around 11:00 AM due to repairs.",others
+"The world's oldest continually inhabited city is said to be Damascus.",others
+"The earliest known form of agriculture developed around 10,000 BCE.",others
+"The climate in Bengaluru is usually pleasant, especially in the mornings before 9:00 AM.",others
+"Your account activity from July 1st to July 15th is now ready for review.",others
+"The tallest building in the world, Burj Khalifa, stands over 828 meters high.",others
+"The sun sets over the Pacific Ocean, a sight worth catching every evening.",others
+"The historical record shows the first use of gunpowder in China around the 9th century.",others
+"The city's air quality was reported as 'good' this morning at 8:00 AM.",others
+"Most of the city's small businesses close by 7:00 PM on weekdays.",others
+"The Earth rotates on its axis, causing day and night cycles.",others
+"The average depth of the deepest part of the ocean is approximately 11,000 meters.",others
+"The first telephone call was made by Alexander Graham Bell in 1876.",others
+"The moon's gravitational pull influences ocean tides worldwide.",others
+"Your loyalty points balance was last updated on July 18th at 3:00 PM.",others
+"The earliest known human ancestors originated in Africa millions of years ago.",others
+"The school year in New Delhi typically begins in April.",others
+"The Earth's atmosphere is composed primarily of nitrogen and oxygen.",others
+"The oldest known tree in the world is a bristlecone pine, over 5,000 years old.",others
+"The average human adult needs about 7-9 hours of sleep per night.",others
+"The daily news briefing is sent out via email around 7:00 AM.",others
+"The famous cherry blossoms in Japan bloom for a brief period in spring.",others
+"The largest desert in Asia is the Gobi Desert.",others
+"The historical site in Pompeii, Italy, is open from 9:00 AM to 5:00 PM daily.",others
+"The average human adult consumes about 2,000 calories per day.",others
+"The first recorded Olympic Games took place in ancient Greece.",others
+"Your device's last backup was completed at 1:00 AM today.",others
+"The new construction work next door usually kicks off by 8:00 AM.",others
+"The climate in Goa is typically warm and humid, especially in May.",others
+"The first successful flight by the Wright brothers occurred in 1903.",others
+"The average human heart beats about 100,000 times a day.",others
+"The historical records indicate the first major civilization arose in Mesopotamia.",others
+"The sunrise today was at 5:55 AM, according to my weather app.",others
+"The next major public holiday in India is on August 15th.",others
+"The average amount of daylight varies significantly with the seasons.",others
+"The earliest human artistic expressions were cave paintings.",others
+"My coffee machine is acting up, so no fresh brew before 7:30 AM today!",others
+"The highest peak in Africa is Mount Kilimanjaro.",others
+"The first photograph was taken in the 19th century.",others
+"The average lifespan of a domestic cat is 12-18 years.",others
+"The Earth's crust is divided into several tectonic plates.",others
+"The oldest known written law code is from ancient Mesopotamia.",others
+"The daily temperature report for the city is published at 6:00 PM.",others
+"The average human skeleton contains 206 bones.",others
+"The first successful space launch was Sputnik in 1957.",others
+"The local market usually winds down its operations by 8:00 PM.",others
+"The average water content in the human body is about 60%.",others
+"Your quarterly performance review data will be available by October 31st.",others
+"The historical archives are accessible from 10:00 AM to 4:00 PM.",others
+"The average speed of a racing car can exceed 300 km/h.",others
+"The first successful human heart transplant happened in 1967.",others
+"The sun sets over the Swiss Alps, creating a stunning alpenglow.",others
+"The average human walks over 8,000 steps daily.",others
+"The Earth's core is primarily composed of iron and nickel.",others
+"The earliest known use of fire by hominids dates back over a million years.",others
+"My internet connection often slows down after 9:00 PM.",others
+"The average lifespan of a dog is typically between 10 and 13 years.",others
+"The largest ocean on Earth by volume is the Pacific Ocean.",others
+"The Earth's tilt on its axis is what causes the different seasons.",others
+"The average home consumes about 877 kWh of electricity per month.",others
+"The first known use of paper was in ancient China.",others
+"The average annual temperature in the Sahara Desert is around 30°C.",others
+"The first photograph of Earth taken from space was in 1946.",others
+"The average human adult breathes about 20,000 times per day.",others
+"The world's population is projected to reach 10 billion by 2050.",others
+"The earliest evidence of complex tools dates back 3.3 million years.",others
+"The average number of words a person speaks per day is around 16,000.",others
+"The Great Wall of China is visible from low Earth orbit.",others
+"The average weight of a newborn baby is about 3.5 kilograms.",others
+"The first email was sent in 1971, changing communication forever.",others
+"The average human can hold their breath for about a minute.",others
+"The highest point in Oceania is Puncak Jaya in Indonesia.",others
+"The average speed of sound is about 343 meters per second in air.",others
+"The Earth's ozone layer protects us from harmful UV radiation.",others
+"The earliest known musical instruments were flutes made from bone.",others
+"My laptop's battery indicator turns red at 20%.",others
+"The average lifespan of a modern skyscraper is over 100 years.",others
+"The oldest known human footprint was discovered in Tanzania.",others
+"The average density of the Earth is about 5.5 grams per cubic centimeter.",others
+"The first human heart transplant was performed in 1967 by Dr. Christiaan Barnard.",others
+"The average adult has about 5 liters of blood.",others
+"The Earth's largest continent by land area is Asia.",others
+"The average temperature of the human body is 37°C.",others
+"The sun rises in the east every morning.",others
+"The last time my phone updated its software was on July 10th at 3 AM.",others
+text_sample,category
+"The weather forecast anticipates a clear evening in Bengaluru.",others
+"The sun sets over the Arabian Sea, painting the horizon in vivid hues.",others
+"My coffee machine usually starts brewing automatically at 6:15 AM.",others
+"The local convenience store closes at 11:00 PM nightly.",others
+"Heard the new library section will be accessible by next Monday.",others
+"The average temperature in Chennai for July hovers around 30°C.",others
+"Traffic on the Outer Ring Road is typically heavy from 5:00 PM to 7:00 PM.",others
+"The British Museum in London is closed on public holidays.",others
+"The peak hour for electricity consumption in our building is usually 7:00 PM.",others
+"Your daily steps count reached 8,500 by 6:00 PM yesterday.",others
+"The Earth spins on its axis, completing one rotation every twenty-four hours.",others
+"The deepest part of the ocean, the Mariana Trench, plunges over 11,000 meters.",others
+"The first successful human heart transplant occurred in 1967.",others
+"The moon was last in its full phase on June 21st.",others
+"Your account statement for July will be available after the 5th of August.",others
+"The nearest post office generally opens at 9:00 AM.",others
+"The new policy will become effective from January 1st, 2026.",others
+"My dog always expects his morning walk by 7:00 AM.",others
+"The highest point in North America is Mount Denali in Alaska.",others
+"The average human blinks about 15-20 times per minute, totaling thousands daily.",others
+"The first railway line in India began operation in 1853.",others
+"The historical city of Hampi is a UNESCO World Heritage site.",others
+"The air quality index for our area was reported as 'moderate' at 9:00 AM.",others
+"Most local businesses operate until 8:00 PM on Saturdays.",others
+"The Amazon River carries an immense volume of water to the Atlantic Ocean.",others
+"The world's largest desert, the Antarctic Polar Desert, covers vast icy expanses.",others
+"The first photograph was captured by Nicéphore Niépce in 1826.",others
+"The moon's gravitational pull influences the tides of the Earth's oceans.",others
+"Your usage data for the current billing cycle refreshes on the 10th.",others
+"The earliest known human settlements date back tens of thousands of years.",others
+"The school term usually ends in March.",others
+"The Earth's atmosphere shields us from harmful solar radiation.",others
+"The oldest living tree is a bristlecone pine, located in California.",others
+"The average adult needs around 7-9 hours of sleep per night.",others
+"The daily news update is delivered to subscribers at 7:30 AM.",others
+"The cherry blossoms in Kyoto typically bloom for a short period in early April.",others
+"The largest continent is Asia.",others
+"The historical site of Pompeii is open from 9 AM to 5 PM.",others
+"The average human adult's brain weighs approximately 1.4 kilograms.",others
+"The first Olympic Games were held in ancient Greece in 776 BC.",others
+"Your device was last connected to Wi-Fi at 10:45 PM yesterday.",others
+"Construction noise next door often starts around 8:15 AM.",others
+"The climate in the Maldives is perpetually tropical, offering warm temperatures year-round.",others
+"The first successful flight was made by the Wright brothers in 1903.",others
+"The average human heart beats around 100,000 times a day, tirelessly pumping blood.",others
+"The earliest known civilizations emerged in Mesopotamia.",others
+"Sunrise was at 5:58 AM.",others
+"The next public holiday is on October 2nd.",others
+"The amount of daylight diminishes noticeably during winter.",others
+"Ancient cave paintings provide insights into prehistoric life.",others
+"My home security system sent an alert: motion detected at 2:05 AM.",others
+"Mount Everest, the world's highest peak, stands majestically in the Himalayas.",others
+"The first telephone call took place in 1876.",others
+"A typical house cat lives for about 15 years.",others
+"The Earth's core is composed mainly of iron and nickel.",others
+"The oldest continuously inhabited city is thought to be Damascus.",others
+"Daily temperature readings for the server room are logged at midnight.",others
+"The average human skeleton comprises 206 bones.",others
+"The first artificial satellite, Sputnik 1, was launched into space in 1957.",others
+"The local farmers' market usually winds down by 1:00 PM.",others
+"The human body contains roughly 60% water by weight.",others
+"Your quarterly financial report will be finalized by October 31st.",others
+"The historical records room is accessible Monday through Friday, 9:00 AM to 4:00 PM.",others
+"The speed of light in a vacuum is a constant 299,792,458 meters per second.",others
+"The first successful kidney transplant was performed in 1954.",others
+"The sun sets gracefully over the iconic Burj Khalifa in Dubai.",others
+"The average person walks over 7,000 steps daily, contributing to overall health.",others
+"The Earth's gravitational pull keeps us grounded.",others
+"Ancient tools discovered in Africa date back millions of years.",others
+"My internet connection occasionally drops around 9:30 PM.",others
+"The typical lifespan of a large dog breed is 8-12 years.",others
+"The Pacific Ocean covers about one-third of the Earth's surface.",others
+"The Earth's axial tilt directly causes the seasons to change.",others
+"The average household consumes about 900 kWh of electricity per month.",others
+"The first email was sent in 1971, a groundbreaking moment for communication.",others
+"The average annual rainfall in the Amazon rainforest is over 2,000 mm.",others
+"The first picture of Earth from the moon was taken in 1966.",others
+"The average human consumes about 2,000 to 3,000 ml of water daily.",others
+"The world's population officially reached 8 billion in November 2022.",others
+"Early evidence suggests fire was controlled by humans over a million years ago.",others
+"The average adult heart pumps approximately 5 liters of blood per minute.",others
+"The Amazon rainforest is a vital carbon sink for the planet.",others
+"The Earth's age is estimated at around 4.54 billion years.",others
+"The average human body temperature is consistently around 37°C.",others
+"The sun rises in the east, without fail, every morning.",others
+"My phone's battery percentage dropped to 15% by 4:30 PM today.",others
+"The average number of words a person speaks per day varies greatly.",others
+"The Great Lakes hold about 20% of the world's fresh surface water.",others
+"The average weight of an adult human brain is about 1.4 kilograms.",others
+"The first printed book was the Gutenberg Bible, around 1455.",others
+"The average human can hold their breath for roughly 60 seconds.",others
+"The highest point in Australia is Mount Kosciuszko.",others
+"The average speed of a racing car can exceed 350 km/h.",others
+"The Earth's ozone layer plays a crucial role in protecting life from UV rays.",others
+"Early evidence of advanced tool-making dates to roughly 3.3 million years ago.",others
+"The average number of cells in the human body is estimated to be 37 trillion.",others
+"The largest coral reef system is the Great Barrier Reef.",others
+"The average lifespan of a car is around 12 years.",others
+"The earliest known use of a compass was in ancient China.",others
+"The average density of the Earth is about 5.5 grams per cubic centimeter.",others
+"The first photograph of a human being was taken in 1838.",others
+"The average adult has about 5 to 6 liters of blood.",others
+"The Earth's atmosphere is composed primarily of nitrogen.",others
+"The average human consumes about 2,000 calories daily.",others
+"Sunrise in Paris during mid-summer is around 5:45 AM.",others
+"My smart speaker announced the local temperature is 28°C as of 1:00 PM.",others
+text_sample,category
+"The weather service expects heavy fog in London around 6:00 AM tomorrow.",others
+"Your local council just updated bin collection times; it's now 7:30 AM every Tuesday.",others
+"My smart thermostat reported the living room temperature hit 22°C at 3:00 PM today.",others
+"The busiest shopping hours at Westfield Stratford City are typically 1:00 PM to 4:00 PM on Saturdays.",others
+"Traffic on the M4 corridor near Reading can get pretty bad from 7:00 AM to 9:00 AM.",others
+"The National Rail network usually sees fewer delays after 9:30 AM.",others
+"Your daily news briefing from BBC News is ready, updated as of 7:00 AM GMT.",others
+"The sun sets over the Cliffs of Moher in Ireland around 9:00 PM during summer.",others
+"The average mobile data usage in the UK is around 25GB per month.",others
+"Heard the new pub in Manchester officially opens at 5:00 PM this Friday.",others
+"The first Tube trains in London start running around 5:30 AM.",others
+"The latest official inflation figures for the Eurozone will be released at 11:00 AM CET next week.",others
+"Your current billing cycle resets on the 1st of every month at midnight.",others
+"Most European banks close their branches by 4:00 PM on weekdays.",others
+"The daily stock market update from Frankfurt is published around 5:30 PM CET.",others
+"The new GDPR regulations became enforceable across the EU on May 25th, 2018.",others
+"My smart home device detected unusual activity at the front door around 1:00 AM.",others
+"The average temperature in Berlin during January can drop to -2°C.",others
+"The next major meteor shower visible from Europe is expected on August 13th.",others
+"Your monthly electricity consumption report for July is now available.",others
+"The traffic on the Autobahn near Munich is typically lightest between 10:00 AM and 3:00 PM.",others
+"The sun rises over the Brandenburg Gate in Berlin, illuminating the historic landmark.",others
+"Your parcel's tracking information was last updated at 9:00 AM PDT.",others
+"The local park in Central Park, NYC, officially closes at 10:00 PM.",others
+"Heard the new coffee shop on 5th Avenue opens at 6:00 AM.",others
+"The average high tide in the Hudson River occurs around 1:00 PM.",others
+"Your security system detected a power fluctuation at 4:30 AM this morning.",others
+"The Golden Gate Bridge experiences its busiest traffic during rush hour.",others
+"The latest weather alert for Florida indicates heavy thunderstorms by 4:00 PM.",others
+"My flight status checker says boarding starts at 10:00 AM.",others
+"The last time the New York Stock Exchange was closed for a holiday was July 4th.",others
+"The current time in Los Angeles is 9:00 AM on July 19th, 2025.",others
+"The average snowfall in Boston during winter is about 44 inches.",others
+"The first subway trains in New York City operate 24/7.",others
+"Your credit card statement for last month is now ready.",others
+"The Grand Canyon is best visited in the early morning to avoid crowds.",others
+"The average American household uses about 867 kWh of electricity per month.",others
+"The Declaration of Independence was signed on July 4th, 1776.",others
+"The peak time for streaming in the US is usually after 8:00 PM.",others
+"Your local news channel airs its evening report at 6:00 PM EST.",others
+"The Mumbai Local trains are usually packed during peak hours, 8:00 AM to 11:00 AM.",others
+"The latest air quality index for Delhi was reported as 'poor' at 6:00 PM.",others
+"Your current mobile data usage for the month is 15GB.",others
+"The average monsoon rainfall in Mumbai is over 2,000 mm annually.",others
+"The local grocery store in Chennai usually opens by 7:00 AM.",others
+"Heard the new metro line in Bengaluru will open in 2026.",others
+"The first flight from Mumbai to London typically departs around 1:00 AM IST.",others
+"Your utility bill for June is due by July 25th.",others
+"The Taj Mahal is open for visitors from sunrise to sunset.",others
+"The average temperature in Jaipur during May can reach 40°C by 2:00 PM.",others
+"The Delhi Metro usually runs until 11:30 PM.",others
+"Your bank account balance was updated at 9:00 AM this morning.",others
+"The last time the Indian stock market had a major correction was in 2020.",others
+"The climate in Kolkata is hot and humid, especially in July.",others
+"The average commute time in Bengaluru can exceed 90 minutes during rush hour.",others
+"Your electricity consumption for yesterday was 10 units.",others
+"The general elections in India usually take place in April-May.",others
+"The sun sets over Gateway of India in Mumbai, a beautiful sight around 7:00 PM.",others
+"Your daily fitness summary shows you walked 8,000 steps by 7:00 PM.",others
+"The new flyover in Pune is expected to be completed by December.",others
+"The local park in Hyderabad is open from 5:00 AM to 9:00 PM.",others
+"Your smart meter indicated peak usage between 6:00 PM and 9:00 PM last night.",others
+"The earliest known human settlements in India date back thousands of years.",others
+"The average temperature in Bengaluru is around 25°C.",others
+"Your train's current status is 'on time,' as of 10:30 AM.",others
+"The traffic outside our office is surprisingly light this afternoon.",others
+"The historical Qutub Minar in Delhi stands tall at 73 meters.",others
+"The average depth of the Bay of Bengal is about 2,600 meters.",others
+"The first sunrise in India is typically seen in Arunachal Pradesh.",others
+"Your device's storage is 90% full, last checked at 4:00 PM.",others
+"The nearest petrol pump closes at 10:00 PM.",others
+"The average human heart beats around 72 times per minute.",others
+"The first Vande Bharat Express train started operations in 2019.",others
+"The Earth orbits the Sun, completing a revolution every 365 days.",others
+"The climate in Chennai is generally hot and humid throughout the year.",others
+"The average lifespan of a modern smartphone is about 2-3 years.",others
+"The first photo of Earth from space was taken in 1946.",others
+"Your daily news feed updated at 6:00 AM local time.",others
+"The average temperature in Paris during July is around 20°C.",others
+"The Eiffel Tower lights twinkle for 5 minutes every hour after sunset.",others
+"The average rainfall in Rome during winter is higher.",others
+"The earliest known human civilization developed in Mesopotamia.",others
+"Your monthly data plan resets on the 1st.",others
+"The sun rises over the Alps, offering stunning views from 5:30 AM.",others
+"The average speed limit on German Autobahns is unlimited in some sections.",others
+"The Eurostar train from London to Paris takes about 2 hours and 15 minutes.",others
+"The average household energy consumption in France is about 4,600 kWh annually.",others
+"The earliest known written records date back to 3400 BC.",others
+"Your device's software was last updated on June 1st.",others
+"The average human adult consumes about 2,000 to 2,500 calories per day.",others
+"The highest mountain in Europe is Mount Elbrus.",others
+"The first flight across the English Channel was in 1909.",others
+"The average time spent on social media in Europe is around 2 hours per day.",others
+"The Earth's circumference at the equator is about 40,075 kilometers.",others
+"The earliest known human ancestors originated in Africa.",others
+"Your car's diagnostic system detected a low tire pressure at 7:00 AM.",others
+"The average temperature on the moon's surface can reach 127°C during the day.",others
+"The deepest part of the Mediterranean Sea is the Calypso Deep.",others
+"The average amount of sleep a teenager needs is 8-10 hours.",others
+"The first photograph of a black hole was captured in 2019.",others
+"Your smart home camera recorded a package delivery at 2:00 PM.",others
+"The average weight of an adult human brain is about 1.4 kg.",others
+"The Earth's atmosphere extends hundreds of kilometers into space.",others
+"The earliest known use of fire by hominids was over a million years ago.",others
+"Your smart doorbell detected motion at 10:00 AM.",others
+"The average lifespan of a laptop is 3-5 years.",others
+"The world's population hit 7 billion in 2011.",others
+"The earliest known evidence of art dates back tens of thousands of years.",others
+"Your smart watch indicates your heart rate was 75 bpm at 9:00 AM.",others
+text_sample,category
+"The Meteorological Office anticipates clear skies over London throughout the day.",others
+"Your local council just announced a minor change: recycling collection will now begin at 7:00 AM on Thursdays.",others
+"The smart thermostat reported the living room's temperature reached a comfortable 23°C at precisely 2:45 PM.",others
+"Busiest periods at the Phoenix Market City mall in Bengaluru are typically between 12:00 PM and 5:00 PM on weekends.",others
+"Traffic on the M1 southbound near Watford can become quite congested from 7:00 AM to 9:30 AM on weekdays.",others
+"National Rail services generally experience fewer delays during off-peak hours, usually after 9:00 AM.",others
+"Your daily BBC News briefing has been updated with headlines as of 6:00 AM GMT.",others
+"The sun dips below the horizon over the Cliffs of Moher in Ireland, painting spectacular hues across the evening sky.",others
+"The average mobile data consumption for users in the UK now stands at approximately 30GB per month.",others
+"That new coffee shop on Brick Lane in London officially opens at 7:00 AM next Tuesday.",others
+"The first Tube trains in Central London typically commence service around 5:00 AM.",others
+"The latest official unemployment figures for the Eurozone are slated for release at 10:00 AM CET next Friday.",others
+"Your current billing cycle for internet services automatically resets on the 5th of each month at midnight.",others
+"Most major banks across Europe usually close their physical branches by 5:00 PM on standard business days.",others
+"The daily summary of trading activity from the Euronext Paris exchange is published around 5:40 PM CET.",others
+"New cybersecurity directives are slated to be implemented across all EU member states starting January 1st, 2026.",others
+"My smart home system unexpectedly detected some motion near the rear entrance at 3:10 AM this morning.",others
+"The average ambient temperature in Rome during the month of August often exceeds 30°C.",others
+"The next significant celestial event, a total lunar eclipse, is predicted to be visible from parts of Europe on November 8th, 2025.",others
+"Your monthly electricity consumption report, detailing usage from June, is now readily available in your online portal.",others
+"Traffic flow on the Autobahn section near Stuttgart is generally lightest between 10:30 AM and 2:30 PM.",others
+"The sun majestically rises over the historic Colosseum in Rome, casting long shadows across the ancient ruins.",others
+"Your package's current tracking status was last updated at 10:15 AM PDT, indicating it's still in transit.",others
+"The main public garden in Hyde Park, London, strictly closes its gates to visitors at 9:00 PM.",others
+"Heard the new vegan restaurant near Borough Market opens at noon tomorrow.",others
+"The typical high tide in the River Thames occurs around 1:30 PM, affecting river boat schedules.",others
+"Your smart security camera registered a minor vibration near the back window at 4:50 AM this morning.",others
+"The Tower Bridge in London lifts for passing ships a few times a day.",others
+"The local weather station just issued a flash flood warning for parts of New Jersey, effective until 6:00 PM.",others
+"My flight tracker indicates boarding for flight BA286 to London will commence at 11:30 AM from Gate 23.",others
+"The last federal holiday observed in the United States was Juneteenth, on June 19th.",others
+"The current time in Delhi is 3:30 PM on Friday, July 18th, 2025.",others
+"The average annual snowfall in Chicago can be quite substantial, often exceeding 35 inches.",others
+"The earliest subway trains in Boston generally begin their routes around 5:15 AM.",others
+"Your latest credit score update is available as of July 1st.",others
+"The Grand Canyon is absolutely stunning when visited during sunrise, around 5:45 AM, to avoid the midday heat.",others
+"The average American household consumes approximately 10,649 kilowatt-hours of electricity per year.",others
+"The US Constitution was officially ratified on September 17th, 1787.",others
+"Peak streaming hours for Netflix users in the US are typically after 9:00 PM EST.",others
+"Your local news channel's morning headlines are broadcast live at 6:00 AM EST.",others
+"The Mumbai Local trains are notoriously crowded during morning rush hours, from 8:00 AM to 10:00 AM.",others
+"The latest air quality report for Bengaluru indicated 'moderate' levels of pollutants at 5:00 PM.",others
+"Your remaining mobile data balance for the current cycle is 12 GB.",others
+"The average annual rainfall in Cherrapunji, Meghalaya, is among the highest globally.",others
+"The neighborhood bakery in South Delhi usually runs out of fresh bread by 9:30 AM on weekends.",others
+"Heard they're planning a new flyover near Silk Board in Bengaluru; projected completion 2027.",others
+"The first daily direct flight from Chennai to Dubai usually departs around 2:00 AM IST.",others
+"Your recent utility bill from BESCOM is due for payment by July 25th.",others
+"The Taj Mahal in Agra is a magnificent structure, especially beautiful at dawn.",others
+"The average temperature in Hyderabad during April consistently reaches over 38°C by 3:00 PM.",others
+"The Delhi Metro generally operates until 11:30 PM, serving millions of commuters daily.",others
+"Your State Bank of India account balance was successfully updated at 9:15 AM this morning.",others
+"The last major stock market downturn in India occurred in March 2020.",others
+"The climate in Kerala is tropical, characterized by heavy monsoon rains from June to September.",others
+"The average commute time in Delhi during peak traffic can easily exceed two hours.",others
+"Your electricity consumption for yesterday amounted to 15 units, indicating higher usage than average.",others
+"The next phase of the Lok Sabha elections in India is scheduled for 2029.",others
+"The sun sets over Marine Drive in Mumbai, creating a stunning backdrop around 7:15 PM.",others
+"Your daily fitness summary indicates you completed 12,000 steps by 8:00 PM last night.",others
+"The new elevated corridor in Nagpur is anticipated to be open for public use by early next year.",others
+"The public garden in Cubbon Park, Bengaluru, is open from 5:00 AM to 8:00 PM.",others
+"Your smart meter recorded unusually high power usage between 7:00 PM and 10:00 PM yesterday.",others
+"The earliest known human habitation in India dates back hundreds of thousands of years.",others
+"The average temperature in Goa for December is a pleasant 28°C.",others
+"The current status of your train, the Rajdhani Express, is 'on schedule,' last updated at 10:45 AM.",others
+"The traffic outside the Hitech City area in Hyderabad is surprisingly smooth this afternoon.",others
+"The historical India Gate in Delhi stands as a memorial to fallen soldiers.",others
+"The average depth of the Arabian Sea is approximately 2,734 meters.",others
+"The first rays of dawn touch the easternmost parts of India, bringing light to the new day.",others
+"Your device's internal storage is now 95% full, last checked at 5:00 PM.",others
+"The petrol pump near my house closes at 11:00 PM, good to know for late night fills.",others
+"The average adult human heart beats around 70 times per minute, continuously.",others
+"The first commercial flight in India took place in 1911.",others
+"The Earth orbits the sun, a journey taking approximately 365.25 days to complete.",others
+"The climate in Rajasthan is predominantly arid, characterized by extreme temperatures.",others
+"The average lifespan of a modern washing machine is around 10-12 years.",others
+"The first photograph of Earth from space was captured in 1946, showing a curved horizon.",others
+"Your daily news feed was updated at 6:30 AM local time.",others
+"The average temperature in Florence, Italy, during August can reach 35°C.",others
+"The Colosseum in Rome is a magnificent ancient amphitheater.",others
+"The average annual rainfall in Paris is about 650 millimeters.",others
+"The earliest evidence of wine production dates back to around 6000 BC.",others
+"Your broadband data plan typically resets on the first day of each month.",others
+"The sun sets over the Swiss Alps, painting the peaks in stunning shades of orange and pink.",others
+"The average driving speed on rural roads in France is around 80 km/h.",others
+"The Mont Blanc Tunnel between France and Italy is a major Alpine crossing.",others
+"The average household energy consumption in Germany is approximately 3,000 kWh annually.",others
+"The earliest known written records of law come from ancient Mesopotamia.",others
+"Your phone's operating system received an automatic security patch on July 10th at 2:00 AM.",others
+"The average adult human consumes about 2,000 to 2,500 calories per day, depending on activity.",others
+"The highest peak in Europe is Mount Elbrus, located in Russia.",others
+"The first successful Channel Tunnel boring machine broke through in 1990.",others
+"The average time spent commuting to work in Europe can be up to an hour daily.",others
+"The Earth's circumference at the poles is slightly less than at the equator.",others
+"The earliest known evidence of farming practices dates back around 12,000 years ago.",others
+"Your car's tire pressure warning light came on at 6:45 AM.",others
+"The average temperature on Mars can drop to -63°C.",others
+"The deepest lake in Europe is Lake Ladoga in Russia.",others
+"The average amount of sleep a preschooler needs is 10-13 hours.",others
+"The first image transmitted via the internet was sent in 1971.",others
+"Your home security camera recorded a delivery person at your door at 11:00 AM.",others
+"The average weight of an adult human liver is about 1.5 kilograms.",others
+"The Earth's atmosphere is crucial for sustaining life on the planet's surface.",others
+"The earliest known use of fire for cooking dates back nearly 2 million years.",others
+"Your smart doorbell detected a package drop-off at 3:30 PM.",others
+"The average lifespan of a common lightbulb is about 1,000 hours.",others
+"The world's population is projected to reach 9 billion by 2037.",others
+"The earliest evidence of complex social structures dates back to ancient civilizations.",others
+"Your fitness tracker shows you've been inactive for 45 minutes since 10:00 AM.",others
+text_sample,category
+"The weather service expects heavy fog in London around 6:00 AM on **November 15th**.",others
+"Your local council just updated bin collection times; it's now 7:30 AM every Tuesday, starting **August 1st**.",others
+"My smart thermostat reported the living room temperature hit 22°C at 3:00 PM today, **July 19th**.",others
+"The busiest shopping hours at Westfield Stratford City are typically 1:00 PM to 4:00 PM on Saturdays.",others
+"Traffic on the M4 corridor near Reading can get pretty bad from 7:00 AM to 9:00 AM on weekdays.",others
+"The National Rail network usually sees fewer delays after 9:30 AM.",others
+"Your daily news briefing from BBC News is ready, updated as of 7:00 AM GMT on **July 19th**.",others
+"The sun sets over the Cliffs of Moher in Ireland around 9:00 PM during summer.",others
+"The average mobile data usage in the UK now stands at over 25GB per month.",others
+"Heard the new pub in Manchester officially opens at 5:00 PM this Friday, **August 2nd**.",others
+"The first Tube trains in London start running around 5:30 AM.",others
+"The latest official inflation figures for the Eurozone will be released at 11:00 AM CET next week, on **July 25th**.",others
+"Your current billing cycle resets on the 1st of every month at midnight.",others
+"Most European banks close their branches by 4:00 PM on weekdays.",others
+"The daily stock market update from Frankfurt is published around 5:30 PM CET.",others
+"The new GDPR regulations became enforceable across the EU on **May 25th, 2018**.",others
+"My smart home device detected unusual activity at the front door around 1:00 AM on **July 19th**.",others
+"The average temperature in Berlin during January can drop to -2°C.",others
+"The next major meteor shower visible from Europe is expected on **August 13th**.",others
+"Your monthly electricity consumption report for July will be available after **August 5th**.",others
+"The traffic on the Autobahn near Munich is typically lightest between 10:00 AM and 3:00 PM.",others
+"The sun rises over the Brandenburg Gate in Berlin, illuminating the historic landmark.",others
+"Your parcel's tracking information was last updated at 9:00 AM PDT on **July 18th**.",others
+"The local park in Central Park, NYC, officially closes at 10:00 PM.",others
+"Heard the new coffee shop on 5th Avenue opens at 6:00 AM on **August 1st**.",others
+"The average high tide in the Hudson River occurs around 1:00 PM.",others
+"Your security system detected a power fluctuation at 4:30 AM this morning, **July 19th**.",others
+"The Golden Gate Bridge experiences its busiest traffic during rush hour.",others
+"The latest weather alert for Florida indicates heavy thunderstorms by 4:00 PM on **July 19th**.",others
+"My flight status checker says boarding starts at 10:00 AM.",others
+"The last time the New York Stock Exchange was closed for a holiday was **July 4th**.",others
+"The current time in Los Angeles is 9:00 AM on **July 19th, 2025**.",others
+"The average snowfall in Boston during winter is about 44 inches.",others
+"The first subway trains in New York City operate 24/7.",others
+"Your credit card statement for last month is now ready.",others
+"The Grand Canyon is best visited in the early morning to avoid crowds.",others
+"The average American household uses about 867 kWh of electricity per month.",others
+"The Declaration of Independence was signed on **July 4th, 1776**.",others
+"The peak time for streaming in the US is usually after 8:00 PM.",others
+"Your local news channel airs its evening report at 6:00 PM EST.",others
+"The Mumbai Local trains are usually packed during peak hours, 8:00 AM to 11:00 AM.",others
+"The latest air quality index for Delhi was reported as 'poor' at 6:00 PM on **July 18th**.",others
+"Your current mobile data usage for the month is 15GB.",others
+"The average monsoon rainfall in Mumbai is over 2,000 mm annually.",others
+"The local grocery store in Chennai usually opens by 7:00 AM.",others
+"Heard the new metro line in Bengaluru will open in 2026.",others
+"The first flight from Mumbai to London typically departs around 1:00 AM IST.",others
+"Your utility bill for June is due by **July 25th**.",others
+"The Taj Mahal is open for visitors from sunrise to sunset.",others
+"The average temperature in Jaipur during May can reach 40°C by 2:00 PM.",others
+"The Delhi Metro usually runs until 11:30 PM.",others
+"Your bank account balance was updated at 9:00 AM this morning, **July 19th**.",others
+"The last time the Indian stock market had a major correction was in 2020.",others
+"The climate in Kolkata is hot and humid, especially in July.",others
+"The average commute time in Bengaluru can exceed 90 minutes during rush hour.",others
+"Your electricity consumption for yesterday was 10 units.",others
+"The general elections in India usually take place in April-May.",others
+"The sun sets over Gateway of India in Mumbai, a beautiful sight around 7:00 PM.",others
+"Your daily fitness summary shows you walked 8,000 steps by 7:00 PM yesterday.",others
+"The new flyover in Pune is expected to be completed by December.",others
+"The local park in Hyderabad is open from 5:00 AM to 9:00 PM.",others
+"Your smart meter indicated peak usage between 6:00 PM and 9:00 PM last night, **July 18th**.",others
+"The earliest known human settlements in India date back thousands of years.",others
+"The average temperature in Bengaluru is around 25°C.",others
+"Your train's current status is 'on time,' as of 10:30 AM on **July 19th**.",others
+"The traffic outside our office is surprisingly light this afternoon.",others
+"The historical Qutub Minar in Delhi stands tall at 73 meters.",others
+"The average depth of the Bay of Bengal is about 2,600 meters.",others
+"The first sunrise in India is typically seen in Arunachal Pradesh.",others
+"Your device's storage is 90% full, last checked at 4:00 PM on **July 19th**.",others
+"The nearest petrol pump closes at 10:00 PM.",others
+"The average human heart beats around 72 times per minute.",others
+"The first Vande Bharat Express train started operations in 2019.",others
+"The Earth orbits the Sun, completing a revolution every 365 days.",others
+"The climate in Chennai is generally hot and humid throughout the year.",others
+"The average lifespan of a modern smartphone is about 2-3 years.",others
+"The first photo of Earth from space was taken in 1946.",others
+"Your daily news feed updated at 6:00 AM local time.",others
+"The average temperature in Paris during July is around 20°C.",others
+"The Eiffel Tower lights twinkle for 5 minutes every hour after sunset.",others
+"The average rainfall in Rome during winter is higher.",others
+"The earliest known human civilization developed in Mesopotamia.",others
+"Your monthly data plan resets on the 1st.",others
+"The sun rises over the Alps, offering stunning views from 5:30 AM.",others
+"The average driving speed on rural roads in France is around 80 km/h.",others
+"The Eurostar train from London to Paris takes about 2 hours and 15 minutes.",others
+"The average household energy consumption in France is about 4,600 kWh annually.",others
+"The earliest known written records date back to 3400 BC.",others
+"Your device's software was last updated on **June 1st**.",others
+"The average human adult consumes about 2,000 to 2,500 calories per day.",others
+"The highest mountain in Europe is Mount Elbrus.",others
+"The first flight across the English Channel was in 1909.",others
+"The average time spent on social media in Europe is around 2 hours per day.",others
+"The Earth's circumference at the equator is about 40,075 kilometers.",others
+"The earliest known human ancestors originated in Africa.",others
+"Your car's diagnostic system detected a low tire pressure at 7:00 AM on **July 19th**.",others
+"The average temperature on the moon's surface can reach 127°C during the day.",others
+"The deepest part of the Mediterranean Sea is the Calypso Deep.",others
+"The average amount of sleep a teenager needs is 8-10 hours.",others
+"The first photograph of a black hole was captured in 2019.",others
+"Your smart home camera recorded a package delivery at 2:00 PM on **July 19th**.",others
+"The average weight of an adult human brain is about 1.4 kg.",others
+"The Earth's atmosphere extends hundreds of kilometers into space.",others
+"The earliest known use of fire by hominids was over a million years ago.",others
+"Your smart doorbell detected motion at 10:00 AM on **July 19th**.",others
+"The average lifespan of a laptop is 3-5 years.",others
+"The world's population hit 7 billion in 2011.",others
+"The earliest evidence of complex tools dates back tens of thousands of years.",others
+"Your smart watch indicates your heart rate was 75 bpm at 9:00 AM on **July 19th**.",others
+text_sample,category
+"The weather forecast anticipates clear skies over London around **next Tuesday**.",others
+"Your local council just updated bin collection: it's now at 7:30 AM every Thursday, starting **next week**.",others
+"My smart thermostat reported the living room hit 22°C at 3:00 PM today, **July 19th**.",others
+"The busiest shopping hours at Phoenix Market City mall are usually 1:00 PM to 4:00 PM on **weekends**.",others
+"Traffic on the M4 corridor near Reading can get pretty bad from 7:00 AM to 9:00 AM on **weekdays**.",others
+"National Rail services generally experience fewer delays after 9:30 AM **each morning**.",others
+"Your daily BBC News briefing is ready, updated as of 7:00 AM GMT **this morning**.",others
+"The sun sets over the Cliffs of Moher in Ireland around 9:00 PM during **summer months**.",others
+"The average mobile data usage in the UK now stands at over 25GB per month, as of **June's figures**.",others
+"Heard the new pub in Manchester officially opens at 5:00 PM **next Friday**.",others
+"The first Tube trains in London start running around 5:30 AM **daily**.",others
+"The latest official inflation figures for the Eurozone will be released at 11:00 AM CET **next Thursday**.",others
+"Your current billing cycle resets on the 1st of every month at **midnight**.",others
+"Most European banks close their branches by 4:00 PM on **workdays**.",others
+"The daily stock market update from Frankfurt is published around 5:30 PM CET **each trading day**.",others
+"New GDPR regulations became enforceable across the EU on **May 25th, 2018**.",others
+"My smart home device detected unusual activity at the front door around 1:00 AM **yesterday**.",others
+"The average temperature in Berlin during **January** can drop to -2°C.",others
+"The next major meteor shower visible from Europe is expected on **August 13th**.",others
+"Your monthly electricity consumption report for **July** will be available after **August 5th**.",others
+"The traffic on the Autobahn near Munich is typically lightest between 10:00 AM and 3:00 PM on **any given day**.",others
+"The sun rises over the Brandenburg Gate in Berlin, a beautiful sight **every morning**.",others
+"Your parcel's tracking information was last updated at 9:00 AM PDT **yesterday**.",others
+"The local park in Central Park, NYC, officially closes at 10:00 PM **every night**.",others
+"Heard the new coffee shop on 5th Avenue opens at 6:00 AM **next Monday**.",others
+"The average high tide in the Hudson River occurs around 1:00 PM **daily**.",others
+"Your security system detected a power fluctuation at 4:30 AM **this morning**.",others
+"The Golden Gate Bridge experiences its busiest traffic during **morning rush hour**.",others
+"The latest weather alert for Florida indicates heavy thunderstorms by 4:00 PM **today**.",others
+"My flight status checker says boarding starts at 10:00 AM **for my flight tomorrow**.",others
+"The last time the New York Stock Exchange was closed for a holiday was **July 4th**.",others
+"The current time in Los Angeles is 9:00 AM on **July 19th, 2025**.",others
+"The average snowfall in Boston during **winter** is about 44 inches.",others
+"The first subway trains in New York City operate 24/7, starting early **each day**.",others
+"Your credit card statement for **last month** is now ready.",others
+"The Grand Canyon is best visited in the early morning to avoid crowds, especially in **summer**.",others
+"The average American household uses about 867 kWh of electricity per month, based on **last year's data**.",others
+"The Declaration of Independence was signed on **July 4th, 1776**.",others
+"The peak time for streaming in the US is usually after 8:00 PM **every evening**.",others
+"Your local news channel airs its evening report at 6:00 PM EST **daily**.",others
+"The Mumbai Local trains are usually packed during peak hours, from 8:00 AM to 11:00 AM **on weekdays**.",others
+"The latest air quality index for Delhi was reported as 'poor' at 6:00 PM **yesterday**.",others
+"Your current mobile data usage for the month is 15GB, as of **this morning**.",others
+"The average monsoon rainfall in Mumbai is over 2,000 mm **annually**.",others
+"The local grocery store in Chennai usually opens by 7:00 AM **every day**.",others
+"Heard the new metro line in Bengaluru will open in **2026**.",others
+"The first flight from Mumbai to London typically departs around 1:00 AM IST **each day**.",others
+"Your utility bill for **June** is due by **July 25th**.",others
+"The Taj Mahal is open for visitors from sunrise to sunset, **daily**.",others
+"The average temperature in Jaipur during **May** can reach 40°C by 2:00 PM.",others
+"The Delhi Metro usually runs until 11:30 PM **each night**.",others
+"Your bank account balance was updated at 9:00 AM **this morning**.",others
+"The last time the Indian stock market had a major correction was in **March 2020**.",others
+"The climate in Kolkata is hot and humid, especially in **July**.",others
+"The average commute time in Bengaluru can exceed 90 minutes during **morning rush hour**.",others
+"Your electricity consumption for **yesterday** was 10 units.",others
+"The general elections in India usually take place in **April-May**.",others
+"The sun sets over Gateway of India in Mumbai, a beautiful sight around 7:00 PM **daily**.",others
+"Your daily fitness summary shows you walked 8,000 steps by 7:00 PM **yesterday**.",others
+"The new flyover in Pune is expected to be completed by **December**.",others
+"The local park in Hyderabad is open from 5:00 AM to 9:00 PM **daily**.",others
+"Your smart meter indicated peak usage between 6:00 PM and 9:00 PM **last night**.",others
+"The earliest known human settlements in India date back thousands of years, to **ancient times**.",others
+"The average temperature in Bengaluru is around 25°C **throughout the year**.",others
+"Your train's current status is 'on time,' as of 10:30 AM **today**.",others
+"The traffic outside our office is surprisingly light **this afternoon**.",others
+"The historical Qutub Minar in Delhi stands tall at 73 meters.",others
+"The average depth of the Bay of Bengal is about 2,600 meters.",others
+"The first sunrise in India is typically seen in Arunachal Pradesh **each morning**.",others
+"Your device's storage is 90% full, last checked at 4:00 PM **today**.",others
+"The nearest petrol pump closes at 10:00 PM **every night**.",others
+"The average human heart beats around 72 times per minute.",others
+"The first Vande Bharat Express train started operations in **2019**.",others
+"The Earth orbits the Sun, completing a revolution every 365 days.",others
+"The climate in Chennai is generally hot and humid **throughout the year**.",others
+"The average lifespan of a modern smartphone is about 2-3 years.",others
+"The first photo of Earth from space was taken in **1946**.",others
+"Your daily news feed updated at 6:00 AM local time **this morning**.",others
+"The average temperature in Paris during **July** is around 20°C.",others
+"The Eiffel Tower lights twinkle for 5 minutes every hour after sunset **each evening**.",others
+"The average rainfall in Rome during **winter** is higher.",others
+"The earliest known human civilization developed in Mesopotamia, around **4000 BCE**.",others
+"Your monthly data plan resets on the **1st**.",others
+"The sun rises over the Alps, offering stunning views from 5:30 AM **daily**.",others
+"The average driving speed on rural roads in France is around 80 km/h.",others
+"The Eurostar train from London to Paris takes about 2 hours and 15 minutes.",others
+"The average household energy consumption in France is about 4,600 kWh **annually**.",others
+"The earliest known written records date back to **3400 BC**.",others
+"Your device's software was last updated on **June 1st**.",others
+"The average human adult consumes about 2,000 to 2,500 calories per day.",others
+"The highest mountain in Europe is Mount Elbrus.",others
+"The first flight across the English Channel was in **1909**.",others
+"The average time spent on social media in Europe is around 2 hours per day, according to **recent studies**.",others
+"The Earth's circumference at the equator is about 40,075 kilometers.",others
+"The earliest known human ancestors originated in Africa **millions of years ago**.",others
+"Your car's diagnostic system detected a low tire pressure at 7:00 AM **this morning**.",others
+"The average temperature on the moon's surface can reach 127°C during the day.",others
+"The deepest part of the Mediterranean Sea is the Calypso Deep.",others
+"The average amount of sleep a teenager needs is 8-10 hours **each night**.",others
+"The first photograph of a black hole was captured in **2019**.",others
+"Your smart home camera recorded a package delivery at 2:00 PM **today**.",others
+"The average weight of an adult human brain is about 1.4 kg.",others
+"The Earth's atmosphere extends hundreds of kilometers into space.",others
+"The earliest known use of fire by hominids was over a million years ago, in **ancient Africa**.",others
+"Your smart doorbell detected motion at 10:00 AM **today**.",others
+"The average lifespan of a laptop is 3-5 years.",others
+"The world's population hit 7 billion in **2011**.",others
+"The earliest evidence of complex tools dates back tens of thousands of years, to the **Stone Age**.",others
+"Your smart watch indicates your heart rate was 75 bpm at 9:00 AM **this morning**.",others
+text_sample,category
+"The weather forecast for Bengaluru predicts scattered showers and cooler temperatures around 4:00 PM this coming **Sunday, July 20th**.",others
+"Your local council just updated bin collection: it's now at 7:30 AM every Thursday, starting **next week, July 24th**.",others
+"My smart thermostat reported the living room hit 22°C at 3:00 PM today, **July 19th, 2025**.",others
+"The busiest shopping hours at Phoenix Market City mall are usually 1:00 PM to 4:00 PM on **weekends** here in Bengaluru.",others
+"Traffic on the Outer Ring Road can get pretty bad from 7:00 AM to 9:00 AM on **weekdays**.",others
+"Namma Metro services generally experience fewer delays after 9:30 AM **each morning**.",others
+"Your daily news briefing from a local source is ready, updated as of 7:00 AM IST **this morning**.",others
+"The sun sets over the Arabian Sea around 7:00 PM during **summer months** here.",others
+"The average mobile data usage in India now stands at over 30GB per month, as of **June's figures**.",others
+"Heard the new pub in Koramangala officially opens at 5:00 PM **next Friday, July 25th**.",others
+"The first Namma Metro trains in Bengaluru start running around 5:00 AM **daily**.",others
+"The latest official inflation figures for India will be released at 10:00 AM IST **next Tuesday, July 22nd**.",others
+"Your current billing cycle for internet services resets on the 1st of every month at **midnight**.",others
+"Most major banks in Bengaluru close their branches by 4:00 PM on **workdays**.",others
+"The daily stock market update from BSE is published around 3:45 PM IST **each trading day**.",others
+"New GST regulations became enforceable across India on **July 1st, 2017**.",others
+"My smart home device detected unusual activity at the front door around 1:00 AM **yesterday, July 18th**.",others
+"The average temperature in Bengaluru during **December** can drop to 12°C.",others
+"The next major meteor shower visible from India is expected on **August 13th**.",others
+"Your monthly electricity consumption report for **July** will be available after **August 5th**.",others
+"The traffic on the NICE Road is typically lightest between 10:00 AM and 3:00 PM on **any given day**.",others
+"The sun rises over Lalbagh Botanical Garden in Bengaluru, a beautiful sight **every morning**.",others
+"Your parcel's tracking information was last updated at 9:00 AM IST **yesterday, July 18th**.",others
+"The local park in Cubbon Park, Bengaluru, officially closes at 9:00 PM **every night**.",others
+"Heard the new coffee shop on Brigade Road opens at 6:00 AM **next Monday, July 21st**.",others
+"The average high tide in the Arabian Sea occurs around 1:00 PM **daily**.",others
+"Your security system detected a power fluctuation at 4:30 AM **this morning, July 19th**.",others
+"The Silk Board junction experiences its busiest traffic during **morning rush hour**.",others
+"The latest weather alert for Karnataka indicates heavy thunderstorms by 4:00 PM **today, July 19th**.",others
+"My flight status checker says boarding starts at 10:00 AM **for my flight tomorrow, July 20th**.",others
+"The last time the New York Stock Exchange was closed for a holiday was **July 4th**.",others
+"The current time in Los Angeles is 9:00 PM on **Friday, July 18th, 2025**.",others
+"The average snowfall in Boston during **winter** is about 44 inches.",others
+"The first subway trains in New York City operate 24/7, starting early **each day**.",others
+"Your credit card statement for **last month** is now ready.",others
+"The Grand Canyon is best visited in the early morning to avoid crowds, especially in **summer**.",others
+"The average American household uses about 867 kWh of electricity per month, based on **last year's data**.",others
+"The Declaration of Independence was signed on **July 4th, 1776**.",others
+"The peak time for streaming in the US is usually after 8:00 PM **every evening**.",others
+"Your local news channel airs its evening report at 6:00 PM EST **daily**.",others
+"The Mumbai Local trains are usually packed during peak hours, from 8:00 AM to 11:00 AM on **weekdays**.",others
+"The latest air quality index for Delhi was reported as 'poor' at 6:00 PM **yesterday, July 18th**.",others
+"Your current mobile data usage for the month is 15GB, as of **this morning, July 19th**.",others
+"The average monsoon rainfall in Mumbai is over 2,000 mm **annually**.",others
+"The local grocery store in Chennai usually opens by 7:00 AM **every day**.",others
+"Heard the new metro line in Bengaluru will open in **2026**.",others
+"The first flight from Mumbai to London typically departs around 1:00 AM IST **each day**.",others
+"Your utility bill for **June** is due by **July 25th**.",others
+"The Taj Mahal is open for visitors from sunrise to sunset, **daily**.",others
+"The average temperature in Jaipur during **May** can reach 40°C by 2:00 PM.",others
+"The Delhi Metro usually runs until 11:30 PM **each night**.",others
+"Your bank account balance was updated at 9:00 AM **this morning, July 19th**.",others
+"The last time the Indian stock market had a major correction was in **March 2020**.",others
+"The climate in Kolkata is hot and humid, especially in **July**.",others
+"The average commute time in Bengaluru can exceed 90 minutes during **morning rush hour**.",others
+"Your electricity consumption for **yesterday** was 10 units.",others
+"The general elections in India usually take place in **April-May**.",others
+"The sun sets over Gateway of India in Mumbai, a beautiful sight around 7:00 PM **daily**.",others
+"Your daily fitness summary shows you walked 8,000 steps by 7:00 PM **yesterday, July 18th**.",others
+"The new flyover in Pune is expected to be completed by **December**.",others
+"The local park in Hyderabad is open from 5:00 AM to 9:00 PM **daily**.",others
+"Your smart meter indicated peak usage between 6:00 PM and 9:00 PM **last night, July 18th**.",others
+"The earliest known human settlements in India date back thousands of years, to **ancient times**.",others
+"The average temperature in Bengaluru is around 25°C **throughout the year**.",others
+"Your train's current status is 'on time,' as of 10:30 AM **today, July 19th**.",others
+"The traffic outside our office is surprisingly light **this afternoon**.",others
+"The historical Qutub Minar in Delhi stands tall at 73 meters.",others
+"The average depth of the Bay of Bengal is about 2,600 meters.",others
+"The first sunrise in India is typically seen in Arunachal Pradesh **each morning**.",others
+"Your device's storage is 90% full, last checked at 4:00 PM **today, July 19th**.",others
+"The nearest petrol pump closes at 10:00 PM **every night**.",others
+"The average human heart beats around 72 times per minute.",others
+"The first Vande Bharat Express train started operations in **2019**.",others
+"The Earth orbits the Sun, completing a revolution every 365 days.",others
+"The climate in Chennai is generally hot and humid **throughout the year**.",others
+"The average lifespan of a modern smartphone is about 2-3 years.",others
+"The first photo of Earth from space was taken in **1946**.",others
+"Your daily news feed updated at 6:00 AM local time **this morning, July 19th**.",others
+"The average temperature in Paris during **July** is around 20°C.",others
+"The Eiffel Tower lights twinkle for 5 minutes every hour after sunset **each evening**.",others
+"The average rainfall in Rome during **winter** is higher.",others
+"The earliest known human civilization developed in Mesopotamia, around **4000 BCE**.",others
+"Your monthly data plan resets on the **1st**.",others
+"The sun rises over the Alps, offering stunning views from 5:30 AM **daily**.",others
+"The average driving speed on rural roads in France is around 80 km/h.",others
+"The Eurostar train from London to Paris takes about 2 hours and 15 minutes.",others
+"The average household energy consumption in France is about 4,600 kWh **annually**.",others
+"The earliest known written records date back to **3400 BC**.",others
+"Your device's software was last updated on **June 1st**.",others
+"The average human adult consumes about 2,000 to 2,500 calories per day.",others
+"The highest mountain in Europe is Mount Elbrus.",others
+"The first flight across the English Channel was in **1909**.",others
+"The average time spent on social media in Europe is around 2 hours per day, according to **recent studies**.",others
+"The Earth's circumference at the equator is about 40,075 kilometers.",others
+"The earliest known human ancestors originated in Africa **millions of years ago**.",others
+"Your car's diagnostic system detected a low tire pressure at 7:00 AM **this morning, July 19th**.",others
+"The average temperature on the moon's surface can reach 127°C during the day.",others
+"The deepest part of the Mediterranean Sea is the Calypso Deep.",others
+"The average amount of sleep a teenager needs is 8-10 hours **each night**.",others
+"The first photograph of a black hole was captured in **2019**.",others
+"Your smart home camera recorded a package delivery at 2:00 PM **today, July 19th**.",others
+"The average weight of an adult human brain is about 1.4 kg.",others
+"The Earth's atmosphere extends hundreds of kilometers into space.",others
+"The earliest known use of fire by hominids was over a million years ago, in **ancient Africa**.",others
+"Your smart doorbell detected motion at 10:00 AM **today, July 19th**.",others
+"The average lifespan of a laptop is 3-5 years.",others
+"The world's population hit 7 billion in **2011**.",others
+"The earliest evidence of complex tools dates back tens of thousands of years, to the **Stone Age**.",others
+"Your smart watch indicates your heart rate was 75 bpm at 9:00 AM **this morning, July 19th**.",others
+text_sample,category
+"The weather forecast for London predicts scattered showers around 4:00 PM this coming **Sunday, July 20th**.",others
+"Your local council just updated bin collection: it's now at 7:30 AM every Thursday, starting **next week, July 24th**.",others
+"My smart thermostat reported the living room hit 22°C at 3:00 PM today, **July 19th, 2025**.",others
+"The busiest shopping hours at Phoenix Market City mall are usually 1:00 PM to 4:00 PM on **weekends** here in Bengaluru.",others
+"Traffic on the M4 corridor near Reading can get pretty bad from 7:00 AM to 9:00 AM on **weekdays**.",others
+"Namma Metro services generally experience fewer delays after 9:30 AM **each morning**.",others
+"Your daily BBC News briefing is ready, updated as of 7:00 AM GMT **this morning**.",others
+"The sun sets over the Arabian Sea around 7:00 PM during **summer months** here.",others
+"The average mobile data usage in the UK now stands at over 25GB per month, as of **June's figures**.",others
+"Heard the new pub in Manchester officially opens at 5:00 PM **next Friday, July 25th**.",others
+"The first Tube trains in London start running around 5:30 AM **daily**.",others
+"The latest official inflation figures for the Eurozone will be released at 10:00 AM CET **next Thursday, July 24th**.",others
+"Your current billing cycle resets on the 1st of every month at **midnight**.",others
+"Most European banks close their branches by 4:00 PM on **workdays**.",others
+"The daily stock market update from Frankfurt is published around 5:30 PM CET **each trading day**.",others
+"New GDPR regulations became enforceable across the EU on **May 25th, 2018**.",others
+"My smart home device detected unusual activity at the front door around 1:00 AM **yesterday, July 18th**.",others
+"The average temperature in Berlin during **January** can drop to -2°C.",others
+"The next major meteor shower visible from Europe is expected on **August 13th**.",others
+"Your monthly electricity consumption report for **July** will be available after **August 5th**.",others
+"The traffic on the Autobahn near Munich is typically lightest between 10:00 AM and 3:00 PM on **any given day**.",others
+"The sun rises over the Brandenburg Gate in Berlin, a beautiful sight **every morning**.",others
+"Your parcel's tracking information was last updated at 9:00 AM PDT **yesterday, July 18th**.",others
+"The local park in Central Park, NYC, officially closes at 10:00 PM **every night**.",others
+"Heard the new coffee shop on 5th Avenue opens at 6:00 AM **next Monday, July 21st**.",others
+"The average high tide in the Hudson River occurs around 1:00 PM **daily**.",others
+"Your security system detected a power fluctuation at 4:30 AM **this morning, July 19th**.",others
+"The Golden Gate Bridge experiences its busiest traffic during **morning rush hour**.",others
+"The latest weather alert for Florida indicates heavy thunderstorms by 4:00 PM **today, July 19th**.",others
+"My flight status checker says boarding starts at 10:00 AM **for my flight tomorrow, July 20th**.",others
+"The last time the New York Stock Exchange was closed for a holiday was **July 4th**.",others
+"The current time in Los Angeles is 9:00 PM on **Friday, July 18th, 2025**.",others
+"The average snowfall in Boston during **winter** is about 44 inches.",others
+"The first subway trains in New York City operate 24/7, starting early **each day**.",others
+"Your credit card statement for **last month** is now ready.",others
+"The Grand Canyon is best visited in the early morning to avoid crowds, especially in **summer**.",others
+"The average American household uses about 867 kWh of electricity per month, based on **last year's data**.",others
+"The Declaration of Independence was signed on **July 4th, 1776**.",others
+"The peak time for streaming in the US is usually after 8:00 PM **every evening**.",others
+"Your local news channel airs its evening report at 6:00 PM EST **daily**.",others
+"The Mumbai Local trains are usually packed during peak hours, from 8:00 AM to 11:00 AM on **weekdays**.",others
+"The latest air quality index for Delhi was reported as 'poor' at 6:00 PM **yesterday, July 18th**.",others
+"Your current mobile data usage for the month is 15GB, as of **this morning, July 19th**.",others
+"The average monsoon rainfall in Mumbai is over 2,000 mm **annually**.",others
+"The local grocery store in Chennai usually opens by 7:00 AM **every day**.",others
+"Heard the new metro line in Bengaluru will open in **2026**.",others
+"The first flight from Mumbai to London typically departs around 1:00 AM IST **each day**.",others
+"Your utility bill for **June** is due by **July 25th**.",others
+"The Taj Mahal is open for visitors from sunrise to sunset, **daily**.",others
+"The average temperature in Jaipur during **May** can reach 40°C by 2:00 PM.",others
+"The Delhi Metro usually runs until 11:30 PM **each night**.",others
+"Your bank account balance was updated at 9:00 AM **this morning, July 19th**.",others
+"The last time the Indian stock market had a major correction was in **March 2020**.",others
+"The climate in Kolkata is hot and humid, especially in **July**.",others
+"The average commute time in Bengaluru can exceed 90 minutes during **morning rush hour**.",others
+"Your electricity consumption for **yesterday** was 10 units.",others
+"The general elections in India usually take place in **April-May**.",others
+"The sun sets over Gateway of India in Mumbai, a beautiful sight around 7:00 PM **daily**.",others
+"Your daily fitness summary shows you walked 8,000 steps by 7:00 PM **yesterday, July 18th**.",others
+"The new flyover in Pune is expected to be completed by **December**.",others
+"The local park in Hyderabad is open from 5:00 AM to 9:00 PM **daily**.",others
+"Your smart meter indicated peak usage between 6:00 PM and 9:00 PM **last night, July 18th**.",others
+"The earliest known human settlements in India date back thousands of years, to **ancient times**.",others
+"The average temperature in Bengaluru is around 25°C **throughout the year**.",others
+"Your train's current status is 'on time,' as of 10:30 AM **today, July 19th**.",others
+"The traffic outside our office is surprisingly light **this afternoon**.",others
+"The historical Qutub Minar in Delhi stands tall at 73 meters.",others
+"The average depth of the Bay of Bengal is about 2,600 meters.",others
+"The first sunrise in India is typically seen in Arunachal Pradesh **each morning**.",others
+"Your device's storage is 90% full, last checked at 4:00 PM **today, July 19th**.",others
+"The nearest petrol pump closes at 10:00 PM **every night**.",others
+"The average human heart beats around 72 times per minute.",others
+"The first Vande Bharat Express train started operations in **2019**.",others
+"The Earth orbits the Sun, completing a revolution every 365 days.",others
+"The climate in Chennai is generally hot and humid **throughout the year**.",others
+"The average lifespan of a modern smartphone is about 2-3 years.",others
+"The first photo of Earth from space was taken in **1946**.",others
+"Your daily news feed updated at 6:00 AM local time **this morning, July 19th**.",others
+"The average temperature in Paris during **July** is around 20°C.",others
+"The Eiffel Tower lights twinkle for 5 minutes every hour after sunset **each evening**.",others
+"The average rainfall in Rome during **winter** is higher.",others
+"The earliest known human civilization developed in Mesopotamia, around **4000 BCE**.",others
+"Your monthly data plan resets on the **1st**.",others
+"The sun rises over the Alps, offering stunning views from 5:30 AM **daily**.",others
+"The average driving speed on rural roads in France is around 80 km/h.",others
+"The Eurostar train from London to Paris takes about 2 hours and 15 minutes.",others
+"The average household energy consumption in France is about 4,600 kWh **annually**.",others
+"The earliest known written records date back to **3400 BC**.",others
+"Your device's software was last updated on **June 1st**.",others
+"The average human adult consumes about 2,000 to 2,500 calories per day.",others
+"The highest mountain in Europe is Mount Elbrus.",others
+"The first flight across the English Channel was in **1909**.",others
+"The average time spent on social media in Europe is around 2 hours per day, according to **recent studies**.",others
+"The Earth's circumference at the equator is about 40,075 kilometers.",others
+"The earliest known human ancestors originated in Africa **millions of years ago**.",others
+"Your car's diagnostic system detected a low tire pressure at 7:00 AM **this morning, July 19th**.",others
+"The average temperature on the moon's surface can reach 127°C during the day.",others
+"The deepest part of the Mediterranean Sea is the Calypso Deep.",others
+"The average amount of sleep a teenager needs is 8-10 hours **each night**.",others
+"The first photograph of a black hole was captured in **2019**.",others
+"Your smart home camera recorded a package delivery at 2:00 PM **today, July 19th**.",others
+"The average weight of an adult human brain is about 1.4 kg.",others
+"The Earth's atmosphere extends hundreds of kilometers into space.",others
+"The earliest known use of fire by hominids was over a million years ago, in **ancient Africa**.",others
+"Your smart doorbell detected motion at 10:00 AM **today, July 19th**.",others
+"The average lifespan of a laptop is 3-5 years.",others
+"The world's population hit 7 billion in **2011**.",others
+"The earliest evidence of complex tools dates back tens of thousands of years, to the **Stone Age**.",others
+"Your smart watch indicates your heart rate was 75 bpm at 9:00 AM **this morning, July 19th**.",others
