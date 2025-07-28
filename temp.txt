@@ -1,140 +1,53 @@
-fun flattenMap(map: Map<YourEnumLabel, List<NotifObject>>): List<Any> {
-    val list = mutableListOf<Any>()
-    map.entries.forEach { (label, notifs) ->
-        list.add(label) // Header
-        list.addAll(notifs.sortedByDescending { it.score }) // Items
+private var _binding: FragmentNotificationsBinding? = null
+private val binding get() = _binding!!
+
+private lateinit var adapter: SectionedNotifAdapter
+private val notifList = mutableListOf<NotifObject>() // Flat list of NotifObjects
+
+
+binding.btnPredictNotifications.setOnClickListener {
+    // Step 1: Fetch and classify (mocked for now)
+    val resultMap = getMockResults()
+
+    // Step 2: Store flat NotifObject list for feedback
+    notifList.clear()
+    notifList.addAll(resultMap.values.flatten())
+
+    // Step 3: Flatten into sectioned list and bind adapter
+    val flatList = flattenMap(resultMap)
+
+    adapter = SectionedNotifAdapter(flatList) { notif, feedback ->
+        notif.feedback = feedback // Reflect in global list
     }
-    return list
+
+    binding.recyclerView.adapter = adapter
 }
 
 
-3. Create Layouts
-item_header.xml
-xml
-Copy
-Edit
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/headerTitle"
-    android:padding="8dp"
-    android:textStyle="bold"
-    android:textSize="16sp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
-item_notif.xml
-xml
-Copy
-Edit
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="8dp"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+binding.btnSubmit.setOnClickListener {
+    val feedbacks = notifList.filter { it.feedback != Feedback.NONE }
 
-    <TextView
-        android:id="@+id/textNotif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <CheckBox
-            android:id="@+id/chkLike"
-            android:text="Like"/>
-
-        <CheckBox
-            android:id="@+id/chkDislike"
-            android:text="Dislike"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-</LinearLayout>
-
-
-
-4. Adapter Implementation
-kotlin
-Copy
-Edit
-private const val VIEW_TYPE_HEADER = 0
-private const val VIEW_TYPE_ITEM = 1
-kotlin
-Copy
-Edit
-class SectionedNotifAdapter(
-    private val items: List<Any>,
-    private val onFeedbackChanged: (NotifObject, Feedback) -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    override fun getItemViewType(position: Int): Int {
-        return if (items[position] is YourEnumLabel) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
-    }
-
-    override fun getItemCount() = items.size
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == VIEW_TYPE_HEADER) {
-            val binding = ItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            HeaderViewHolder(binding)
-        } else {
-            val binding = ItemNotifBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            ItemViewHolder(binding)
-        }
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is HeaderViewHolder) {
-            holder.bind(items[position] as YourEnumLabel)
-        } else if (holder is ItemViewHolder) {
-            holder.bind(items[position] as NotifObject)
-        }
-    }
-
-    inner class HeaderViewHolder(private val binding: ItemHeaderBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(label: YourEnumLabel) {
-            binding.headerTitle.text = label.name
-        }
-    }
-
-    inner class ItemViewHolder(private val binding: ItemNotifBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(notif: NotifObject) {
-            binding.textNotif.text = notif.text
-
-            binding.chkLike.setOnCheckedChangeListener(null)
-            binding.chkDislike.setOnCheckedChangeListener(null)
-
-            binding.chkLike.isChecked = notif.feedback == Feedback.LIKE
-            binding.chkDislike.isChecked = notif.feedback == Feedback.DISLIKE
-
-            binding.chkLike.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    notif.feedback = Feedback.LIKE
-                    binding.chkDislike.isChecked = false
-                    onFeedbackChanged(notif, Feedback.LIKE)
-                } else if (!binding.chkDislike.isChecked) {
-                    notif.feedback = Feedback.NONE
-                    onFeedbackChanged(notif, Feedback.NONE)
-                }
-            }
-
-            binding.chkDislike.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    notif.feedback = Feedback.DISLIKE
-                    binding.chkLike.isChecked = false
-                    onFeedbackChanged(notif, Feedback.DISLIKE)
-                } else if (!binding.chkLike.isChecked) {
-                    notif.feedback = Feedback.NONE
-                    onFeedbackChanged(notif, Feedback.NONE)
-                }
-            }
-        }
+    if (feedbacks.isEmpty()) {
+        Toast.makeText(requireContext(), "No feedback given.", Toast.LENGTH_SHORT).show()
+    } else {
+        // TODO: Save to DB
+        Toast.makeText(requireContext(), "Saved ${feedbacks.size} feedback(s)", Toast.LENGTH_SHORT).show()
     }
 }
 
+binding.btnReset.setOnClickListener {
+    notifList.forEach { it.feedback = Feedback.NONE }
+    adapter.notifyDataSetChanged()
+}
 
+private fun getMockResults(): Map<YourEnumLabel, List<NotifObject>> {
+    return mapOf(
+        YourEnumLabel.FINANCE to listOf(
+            NotifObject("₹10,000 credited", 0.94f, YourEnumLabel.FINANCE),
+            NotifObject("₹5,000 debited", 0.91f, YourEnumLabel.FINANCE)
+        ),
+        YourEnumLabel.PROMOTION to listOf(
+            NotifObject("Recharge and get 30% off", 0.87f, YourEnumLabel.PROMOTION)
+        )
+    )
+}
