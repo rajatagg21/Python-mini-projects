@@ -1,58 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Buttons to switch fragments -->
-    <Button
-        android:id="@+id/btnSingleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Single Text Classification" />
-
-    <Button
-        android:id="@+id/btnNotificationText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notifications Classification" />
-
-    <!-- Fragment container -->
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-</LinearLayout>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Optional customizations -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+    </style>
+</resources>
 
 
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding // using view binding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        // Default fragment
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, SingleTextFragment())
-            .commit()
-
-        // Switch to SingleTextFragment
-        binding.btnSingleText.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, SingleTextFragment())
-                .commit()
-        }
-
-        // Switch to NotificationsFragment
-        binding.btnNotificationText.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, NotificationsFragment())
-                .commit()
-        }
-    }
-}
+android:theme="@style/AppTheme"
