@@ -1,0 +1,181 @@
+Great — View Binding simplifies access to views and avoids `findViewById`.
+
+Let’s update our fragments and adapter code to use **ViewBinding** efficiently.
+
+---
+
+### ✅ **Task 6: Enable View Binding**
+
+In your `build.gradle (Module)`:
+
+````groovy
+android {
+    ...
+    buildFeatures {
+        viewBinding true
+    }
+}
+``>
+
+---
+
+### ✅ **Update: Fragment with ViewBinding**
+
+#### 🧩 `SingleTextFragment.kt`
+
+```kotlin
+class SingleTextFragment : Fragment() {
+
+    private var _binding: FragmentSingleTextBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSingleTextBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.btnClassify.setOnClickListener {
+            val input = binding.editTextInput.text.toString()
+            if (input.isNotBlank()) {
+                val result = runClassification(input)
+                binding.textResult.text = "Label: ${result.label}, Score: ${result.score}"
+            }
+        }
+    }
+
+    private fun runClassification(text: String): NotifObject {
+        return NotifObject(text, 0.92f, YourEnumLabel.FINANCE)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
+````
+
+---
+
+### 🧩 `NotificationsFragment.kt` with ViewBinding
+
+```kotlin
+class NotificationsFragment : Fragment() {
+
+    private var _binding: FragmentNotificationsBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var adapter: SectionedNotifAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        val map = getMockInferenceResults()
+        val flatList = flattenMap(map)
+
+        adapter = SectionedNotifAdapter(flatList) { notif, feedback ->
+            // TODO: Save to DB
+        }
+
+        binding.recyclerView.adapter = adapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
+```
+
+---
+
+### ✅ **Update: RecyclerView Adapter with ViewBinding**
+
+#### 🔹 HeaderViewHolder & NotifViewHolder using bindings
+
+```kotlin
+class SectionedNotifAdapter(
+    private val items: List<Any>,
+    private val onFeedbackChanged: (NotifObject, Feedback) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    override fun getItemViewType(position: Int): Int {
+        return if (items[position] is YourEnumLabel) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == VIEW_TYPE_HEADER) {
+            val binding = ItemHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            HeaderViewHolder(binding)
+        } else {
+            val binding = ItemNotifBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            NotifViewHolder(binding)
+        }
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is HeaderViewHolder) {
+            holder.bind(items[position] as YourEnumLabel)
+        } else if (holder is NotifViewHolder) {
+            holder.bind(items[position] as NotifObject)
+        }
+    }
+
+    inner class HeaderViewHolder(private val binding: ItemHeaderBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(label: YourEnumLabel) {
+            binding.headerTitle.text = label.name
+        }
+    }
+
+    inner class NotifViewHolder(private val binding: ItemNotifBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(notif: NotifObject) {
+            binding.textNotif.text = notif.text
+
+            binding.chkLike.setOnCheckedChangeListener(null)
+            binding.chkDislike.setOnCheckedChangeListener(null)
+
+            binding.chkLike.isChecked = notif.feedback == Feedback.LIKE
+            binding.chkDislike.isChecked = notif.feedback == Feedback.DISLIKE
+
+            binding.chkLike.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    notif.feedback = Feedback.LIKE
+                    binding.chkDislike.isChecked = false
+                    onFeedbackChanged(notif, Feedback.LIKE)
+                } else if (!binding.chkDislike.isChecked) {
+                    notif.feedback = Feedback.NONE
+                }
+            }
+
+            binding.chkDislike.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    notif.feedback = Feedback.DISLIKE
+                    binding.chkLike.isChecked = false
+                    onFeedbackChanged(notif, Feedback.DISLIKE)
+                } else if (!binding.chkLike.isChecked) {
+                    notif.feedback = Feedback.NONE
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+✅ **Next Task**: Set up Room DB to store `NotifObject` + `Feedback`.
+
+Ready to proceed?
