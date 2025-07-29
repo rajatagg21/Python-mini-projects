@@ -1,12 +1,10 @@
-<resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Optional customizations -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
-    </style>
-</resources>
+import pandas as pd
 
+def batch_iterator(df: pd.DataFrame, batch_size: int = 1000):
+    for start in range(0, len(df), batch_size):
+        yield df.iloc[start:start + batch_size]
 
-
-android:theme="@style/AppTheme"
+# Usage
+for batch_df in batch_iterator(df):
+    # process batch_df
+    print(batch_df.shape)
