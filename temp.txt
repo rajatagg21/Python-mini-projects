@@ -1,10 +1,71 @@
-import pandas as pd
+package com.yourapp.inference
 
-def batch_iterator(df: pd.DataFrame, batch_size: int = 1000):
-    for start in range(0, len(df), batch_size):
-        yield df.iloc[start:start + batch_size]
+import android.content.Context
+import java.io.File
+import org.sentencepiece.SentencePieceProcessor
 
-# Usage
-for batch_df in batch_iterator(df):
-    # process batch_df
-    print(batch_df.shape)
+class Tokenizer(context: Context) {
+    private val spp = SentencePieceProcessor()
+
+    init {
+        val modelFile = File(context.filesDir, "sentencepiece.model")
+        if (!modelFile.exists()) {
+            context.assets.open("sentencepiece.model").use { input ->
+                modelFile.outputStream().use { output ->
+                    input.copyTo(output)
+                }
+            }
+        }
+        spp.load(modelFile.absolutePath)
+    }
+
+    fun tokenize(text: String, maxLen: Int = 256): Triple<IntArray, IntArray, IntArray> {
+        var ids = spp.encodeAsIds(text).toIntArray()
+        if (ids.size > maxLen) ids = ids.sliceArray(0 until maxLen)
+        val inputIds = ids + IntArray(maxLen - ids.size) { 0 }
+        val tokenTypeIds = IntArray(maxLen) { 0 }
+        val attentionMask = inputIds.map { if (it != 0) 1 else 0 }.toIntArray()
+        return Triple(inputIds, tokenTypeIds, attentionMask)
+    }
+}
+
+
+package com.yourapp.inference
+
+import android.content.Context
+import org.tensorflow.lite.Interpreter
+import java.nio.MappedByteBuffer
+import java.nio.channels.FileChannel
+import android.content.res.AssetFileDescriptor
+import java.io.FileInputStream
+
+class Classifier(context: Context) {
+    private val interpreter: Interpreter
+
+    init {
+        interpreter = Interpreter(loadModelFile(context), Interpreter.Options())
+    }
+
+    private fun loadModelFile(context: Context): MappedByteBuffer {
+        val fileDescriptor: AssetFileDescriptor = context.assets.openFd("model.tflite")
+        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+        val fileChannel = inputStream.channel
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, fileDescriptor.startOffset, fileDescriptor.declaredLength)
+    }
+
+    fun classify(inputIds: IntArray, tokenTypeIds: IntArray, attentionMask: IntArray): FloatArray {
+        val inputIdsBatch = arrayOf(inputIds)
+        val tokenTypeIdsBatch = arrayOf(tokenTypeIds)
+        val attentionMaskBatch = arrayOf(attentionMask)
+
+        val inputs = arrayOf(inputIdsBatch, tokenTypeIdsBatch, attentionMaskBatch)
+        val output = Array(1) { FloatArray(NUM_CLASSES) }
+
+        interpreter.runForMultipleInputsOutputs(inputs, mapOf(0 to output))
+        return output[0]
+    }
+
+    companion object {
+        const val NUM_CLASSES = 5  // change based on your model
+    }
+}
