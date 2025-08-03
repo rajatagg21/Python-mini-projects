@@ -1,145 +1,113 @@
-Got it — your goal is:
-
-* To **keep `NotificationsFragment` as the owner** of the prediction logic.
-* The `ProcessingDialogFragment` will be **dumb**: it only **shows progress** (`x/y` + progress bar).
-* Prediction starts **on button click** in `NotificationsFragment`.
-* `NotificationsFragment` will:
-
-  * Launch the dialog
-  * Perform model inference on each notification
-  * Update progress on the dialog
-  * Handle cancellation (user pressing "Cancel")
+To communicate between your `NotificationListenerService` and `MainActivity` using a **local binder**, and access **active notifications**, follow this setup:
 
 ---
 
-### ✅ Clean Division of Responsibility
-
-| `NotificationsFragment`          | `ProcessingDialogFragment`                |
-| -------------------------------- | ----------------------------------------- |
-| Owns the data and coroutine      | Only displays progress UI                 |
-| Runs the prediction loop         | Receives updates via `updateProgress()`   |
-| Cancels coroutine on user cancel | Just calls back via `onCancelRequested()` |
-
----
-
-## ✅ 1. `ProcessingDialogFragment.kt`
-
-This fragment is now just a UI with:
-
-* Progress bar
-* Cancel button
-* One method: `updateProgress(current, total)`
-* A listener for "Cancel" button
+## 🧱 1. `NotificationListenerService` with Local Binder
 
 ```kotlin
-class ProcessingDialogFragment(
-    private val onCancelRequested: () -> Unit
-) : DialogFragment() {
+class MyNotificationListenerService : NotificationListenerService() {
 
-    private var progressTextView: TextView? = null
-    private var progressBar: ProgressBar? = null
+    private val binder = LocalBinder()
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = LayoutInflater.from(requireContext())
-            .inflate(R.layout.dialog_processing, null)
-
-        progressTextView = view.findViewById(R.id.progress_text_view)
-        progressBar = view.findViewById(R.id.progress_bar)
-
-        val builder = AlertDialog.Builder(requireContext())
-            .setView(view)
-            .setCancelable(false)
-            .setNegativeButton("Cancel") { _, _ ->
-                onCancelRequested()
-            }
-
-        return builder.create()
+    inner class LocalBinder : Binder() {
+        fun getService(): MyNotificationListenerService = this@MyNotificationListenerService
     }
 
-    fun updateProgress(current: Int, total: Int) {
-        progressTextView?.text = "$current/$total notifications processed"
-        progressBar?.max = total
-        progressBar?.progress = current
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        progressTextView = null
-        progressBar = null
-    }
-}
-```
-
----
-
-## ✅ 2. Inside `NotificationsFragment.kt`
-
-```kotlin
-class NotificationsFragment : Fragment() {
-
-    private var processingJob: Job? = null
-    private var dialog: ProcessingDialogFragment? = null
-
-    // This gets called on predict button click
-    fun onPredictClicked(notifications: List<Notification>) {
-        dialog = ProcessingDialogFragment(
-            onCancelRequested = {
-                processingJob?.cancel("User cancelled")
-            }
-        )
-
-        dialog?.show(parentFragmentManager, "progress")
-
-        processingJob = lifecycleScope.launch(Dispatchers.Default) {
-            val total = notifications.size
-
-            try {
-                for ((index, notif) in notifications.withIndex()) {
-                    // Make sure this is cooperative with cancellation
-                    process(notif)
-
-                    withContext(Dispatchers.Main) {
-                        dialog?.updateProgress(index + 1, total)
-                    }
-                }
-
-                withContext(Dispatchers.Main) {
-                    dialog?.dismissAllowingStateLoss()
-                    Toast.makeText(requireContext(), "All done", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: CancellationException) {
-                withContext(Dispatchers.Main) {
-                    dialog?.dismissAllowingStateLoss()
-                    Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_SHORT).show()
-                }
-            }
+    override fun onBind(intent: Intent): IBinder {
+        return if (intent.action == NotificationListenerService.SERVICE_INTERFACE) {
+            super.onBind(intent) // required for system binding
+        } else {
+            binder // our local binder
         }
     }
 
-    private suspend fun process(notif: Notification) {
-        delay(200) // Your real model inference logic here
+    fun getActiveNotificationTexts(): List<String> {
+        return activeNotifications
+            .mapNotNull { it.notification.extras.getCharSequence(Notification.EXTRA_TEXT)?.toString() }
+    }
+}
+```
+
+> ⚠️ Use `activeNotifications` only after the service is connected and permission is granted.
+
+---
+
+## 🧩 2. `MainActivity` Binds to the Service
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    private var notificationService: MyNotificationListenerService? = null
+    private var isBound = false
+
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            val binder = service as? MyNotificationListenerService.LocalBinder
+            notificationService = binder?.getService()
+            isBound = true
+
+            // Example usage:
+            val texts = notificationService?.getActiveNotificationTexts() ?: emptyList()
+            Toast.makeText(this@MainActivity, "Found ${texts.size} notifications", Toast.LENGTH_SHORT).show()
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            notificationService = null
+            isBound = false
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        processingJob?.cancel()
-        dialog = null
+    override fun onStart() {
+        super.onStart()
+        Intent(this, MyNotificationListenerService::class.java).also { intent ->
+            bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (isBound) {
+            unbindService(serviceConnection)
+            isBound = false
+        }
     }
 }
 ```
 
 ---
 
-## ✅ Summary
+## 🔐 3. Don’t Forget Notification Listener Permission
 
-* `DialogFragment` is **pure UI** and stateless except `updateProgress`.
-* `NotificationsFragment` is **in control**: data, coroutine, cancellation.
-* Cancel button callback just cancels the coroutine in fragment.
+Make sure user has granted permission:
+
+```kotlin
+fun isNotificationServiceEnabled(context: Context): Boolean {
+    val cn = ComponentName(context, MyNotificationListenerService::class.java)
+    return NotificationManagerCompat.getEnabledListenerPackages(context).contains(cn.packageName)
+}
+```
 
 ---
 
-### Let me know if:
+## ✅ AndroidManifest.xml
 
-* You want this wrapped with a **ViewModel** (`StateFlow` or `LiveData`).
-* You want a **determinate progress bar with percentage**.
-* You’re also showing inference results back in the UI after dialog closes.
+```xml
+<service
+    android:name=".MyNotificationListenerService"
+    android:label="Notification Listener"
+    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+    <intent-filter>
+        <action android:name="android.service.notification.NotificationListenerService" />
+    </intent-filter>
+</service>
+```
+
+---
+
+## ☑️ Summary
+
+* `MyNotificationListenerService` exposes a `getActiveNotificationTexts()` method.
+* `MainActivity` binds with `ServiceConnection`.
+* You get live access to `activeNotifications`.
+
+Let me know if you want to stream updates with LiveData or Flow too.
