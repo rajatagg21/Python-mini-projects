@@ -1,113 +1,145 @@
-To communicate between your `NotificationListenerService` and `MainActivity` using a **local binder**, and access **active notifications**, follow this setup:
+To make your **section headers stick** at the top while scrolling (like sticky headers in a RecyclerView), you can achieve this in two main ways:
 
 ---
 
-## 🧱 1. `NotificationListenerService` with Local Binder
+### ✅ Option 1: Use `StickyHeaderItemDecorator` (simple + reliable)
 
-```kotlin
-class MyNotificationListenerService : NotificationListenerService() {
-
-    private val binder = LocalBinder()
-
-    inner class LocalBinder : Binder() {
-        fun getService(): MyNotificationListenerService = this@MyNotificationListenerService
-    }
-
-    override fun onBind(intent: Intent): IBinder {
-        return if (intent.action == NotificationListenerService.SERVICE_INTERFACE) {
-            super.onBind(intent) // required for system binding
-        } else {
-            binder // our local binder
-        }
-    }
-
-    fun getActiveNotificationTexts(): List<String> {
-        return activeNotifications
-            .mapNotNull { it.notification.extras.getCharSequence(Notification.EXTRA_TEXT)?.toString() }
-    }
-}
-```
-
-> ⚠️ Use `activeNotifications` only after the service is connected and permission is granted.
+If you're using a **sectioned adapter**, and your header views are distinguishable (e.g. by `viewType`), you can use a custom `ItemDecoration` to pin headers.
 
 ---
 
-## 🧩 2. `MainActivity` Binds to the Service
+#### 🔧 1. Add `StickyHeaderItemDecoration.kt`
 
 ```kotlin
-class MainActivity : AppCompatActivity() {
+class StickyHeaderItemDecoration(
+    private val adapter: StickyHeaderInterface
+) : RecyclerView.ItemDecoration() {
 
-    private var notificationService: MyNotificationListenerService? = null
-    private var isBound = false
-
-    private val serviceConnection = object : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            val binder = service as? MyNotificationListenerService.LocalBinder
-            notificationService = binder?.getService()
-            isBound = true
-
-            // Example usage:
-            val texts = notificationService?.getActiveNotificationTexts() ?: emptyList()
-            Toast.makeText(this@MainActivity, "Found ${texts.size} notifications", Toast.LENGTH_SHORT).show()
-        }
-
-        override fun onServiceDisconnected(name: ComponentName?) {
-            notificationService = null
-            isBound = false
-        }
+    interface StickyHeaderInterface {
+        fun isHeader(itemPosition: Int): Boolean
+        fun getHeaderLayout(headerPosition: Int): Int
+        fun bindHeaderData(header: View, headerPosition: Int)
     }
 
-    override fun onStart() {
-        super.onStart()
-        Intent(this, MyNotificationListenerService::class.java).also { intent ->
-            bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        val topChild = parent.getChildAt(0) ?: return
+        val topChildPosition = parent.getChildAdapterPosition(topChild)
+        if (topChildPosition == RecyclerView.NO_POSITION) return
+
+        var headerPosition = topChildPosition
+        while (headerPosition >= 0 && !adapter.isHeader(headerPosition)) {
+            headerPosition--
         }
+
+        if (headerPosition < 0) return
+
+        val headerView = LayoutInflater.from(parent.context)
+            .inflate(adapter.getHeaderLayout(headerPosition), parent, false)
+        adapter.bindHeaderData(headerView, headerPosition)
+
+        measureAndLayout(headerView, parent)
+
+        val contactPoint = headerView.bottom
+        val childInContact = getChildInContact(parent, contactPoint) ?: return
+        if (adapter.isHeader(parent.getChildAdapterPosition(childInContact))) {
+            moveHeader(c, headerView, childInContact)
+            return
+        }
+
+        drawHeader(c, headerView)
     }
 
-    override fun onStop() {
-        super.onStop()
-        if (isBound) {
-            unbindService(serviceConnection)
-            isBound = false
+    private fun getChildInContact(parent: RecyclerView, contactPoint: Int): View? {
+        for (i in 0 until parent.childCount) {
+            val child = parent.getChildAt(i)
+            if (child.top <= contactPoint && child.bottom >= contactPoint) {
+                return child
+            }
         }
+        return null
     }
-}
-```
 
----
+    private fun drawHeader(c: Canvas, header: View) {
+        c.save()
+        c.translate(0f, 0f)
+        header.draw(c)
+        c.restore()
+    }
 
-## 🔐 3. Don’t Forget Notification Listener Permission
+    private fun moveHeader(c: Canvas, currentHeader: View, nextHeader: View) {
+        c.save()
+        c.translate(0f, (nextHeader.top - currentHeader.height).toFloat())
+        currentHeader.draw(c)
+        c.restore()
+    }
 
-Make sure user has granted permission:
-
-```kotlin
-fun isNotificationServiceEnabled(context: Context): Boolean {
-    val cn = ComponentName(context, MyNotificationListenerService::class.java)
-    return NotificationManagerCompat.getEnabledListenerPackages(context).contains(cn.packageName)
+    private fun measureAndLayout(header: View, parent: RecyclerView) {
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(parent.width, View.MeasureSpec.EXACTLY)
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(parent.height, View.MeasureSpec.UNSPECIFIED)
+        header.measure(widthSpec, heightSpec)
+        header.layout(0, 0, header.measuredWidth, header.measuredHeight)
+    }
 }
 ```
 
 ---
 
-## ✅ AndroidManifest.xml
+#### 🔧 2. Implement `StickyHeaderInterface` in your Adapter
 
-```xml
-<service
-    android:name=".MyNotificationListenerService"
-    android:label="Notification Listener"
-    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-    <intent-filter>
-        <action android:name="android.service.notification.NotificationListenerService" />
-    </intent-filter>
-</service>
+```kotlin
+class SectionedNotifAdapter(...) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    StickyHeaderItemDecoration.StickyHeaderInterface {
+
+    companion object {
+        const val TYPE_HEADER = 0
+        const val TYPE_ITEM = 1
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (isHeader(position)) TYPE_HEADER else TYPE_ITEM
+    }
+
+    fun isHeader(position: Int): Boolean {
+        // Logic to determine if position is a header
+        return items[position] is SectionHeader
+    }
+
+    override fun getHeaderLayout(headerPosition: Int): Int {
+        return R.layout.item_section_header // your header layout
+    }
+
+    override fun bindHeaderData(header: View, headerPosition: Int) {
+        val title = items[headerPosition] as SectionHeader
+        header.findViewById<TextView>(R.id.header_text).text = title.title
+    }
+}
 ```
 
 ---
 
-## ☑️ Summary
+#### 🔧 3. Apply `StickyHeaderItemDecoration` in Fragment
 
-* `MyNotificationListenerService` exposes a `getActiveNotificationTexts()` method.
-* `MainActivity` binds with `ServiceConnection`.
-* You get live access to `activeNotifications`.
+```kotlin
+val stickyHeader = StickyHeaderItemDecoration(adapter)
+recyclerView.addItemDecoration(stickyHeader)
+```
 
-Let me know if you want to stream updates with LiveData or Flow too.
+---
+
+### ✅ Option 2: Use `Epoxy` or `Groupie` libraries
+
+If you're already using a **sectioned adapter library** like Groupie or Epoxy, they have built-in support for sticky headers.
+
+Let me know if you're using such a library or a custom adapter with `Map<Section, List<Notif>>`, and I’ll adapt the code accordingly.
+
+---
+
+### 🧪 Summary
+
+If you're manually managing sectioned data:
+
+* Keep track of section headers (either with different view types or a data class flag).
+* Use a `StickyHeaderItemDecoration` to pin the header on top.
+* Call `addItemDecoration()` only once, and ensure header views don't overlap with regular items.
+
+Want me to help you apply this to your exact adapter structure (`Map<Enum, List<Notif>>`)?
