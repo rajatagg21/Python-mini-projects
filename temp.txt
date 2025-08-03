@@ -1,24 +1,88 @@
-override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-    val topChild = parent.getChildAt(0) ?: return
-    val topChildPosition = parent.getChildAdapterPosition(topChild)
-    if (topChildPosition == RecyclerView.NO_POSITION) return
+class StickyHeaderItemDecoration(
+    private val listener: StickyHeaderInterface
+) : RecyclerView.ItemDecoration() {
 
-    // Skip drawing sticky header if the top child *is* the header and fully visible
-    if (listener.isHeader(topChildPosition) && topChild.top == 0) {
-        return
+    interface StickyHeaderInterface {
+        fun isHeader(position: Int): Boolean
+        fun getHeaderPositionForItem(itemPosition: Int): Int
+        fun bindHeaderData(header: View, position: Int)
+        fun getHeaderLayout(): Int
     }
 
-    val headerPosition = listener.getHeaderPositionForItem(topChildPosition)
-    val currentHeader = getHeaderViewForItem(headerPosition, parent)
-    fixLayoutSize(parent, currentHeader)
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        val topChild = parent.getChildAt(0) ?: return
+        val topChildPosition = parent.getChildAdapterPosition(topChild)
+        if (topChildPosition == RecyclerView.NO_POSITION) return
 
-    val contactPoint = currentHeader.bottom
-    val childInContact = getChildInContact(parent, contactPoint)
+        // If topChild is a header and fully visible, don't draw sticky
+        if (listener.isHeader(topChildPosition) && topChild.top == 0) return
 
-    if (childInContact != null && listener.isHeader(parent.getChildAdapterPosition(childInContact))) {
-        moveHeader(c, currentHeader, childInContact)
-        return
+        val headerPosition = listener.getHeaderPositionForItem(topChildPosition)
+        val headerView = getHeaderViewForPosition(headerPosition, parent)
+        fixLayoutSize(parent, headerView)
+
+        val contactPoint = headerView.bottom
+        val childInContact = getChildInContact(parent, contactPoint)
+
+        if (childInContact != null &&
+            listener.isHeader(parent.getChildAdapterPosition(childInContact))
+        ) {
+            // Move sticky up with next header
+            moveHeader(c, headerView, childInContact)
+        } else {
+            drawHeader(c, headerView)
+        }
     }
 
-    drawHeader(c, currentHeader)
+    private fun getHeaderViewForPosition(headerPosition: Int, parent: RecyclerView): View {
+        val layoutResId = listener.getHeaderLayout()
+        val header = LayoutInflater.from(parent.context).inflate(layoutResId, parent, false)
+        listener.bindHeaderData(header, headerPosition)
+        return header
+    }
+
+    private fun drawHeader(c: Canvas, header: View) {
+        c.save()
+        c.translate(0f, 0f)
+        header.draw(c)
+        c.restore()
+    }
+
+    private fun moveHeader(c: Canvas, currentHeader: View, nextHeader: View) {
+        c.save()
+        val dx = 0
+        val dy = nextHeader.top - currentHeader.height
+        c.translate(dx.toFloat(), dy.toFloat())
+        currentHeader.draw(c)
+        c.restore()
+    }
+
+    private fun getChildInContact(parent: RecyclerView, contactPoint: Int): View? {
+        for (i in 0 until parent.childCount) {
+            val child = parent.getChildAt(i)
+            if (child.top <= contactPoint && child.bottom >= contactPoint) {
+                return child
+            }
+        }
+        return null
+    }
+
+    private fun fixLayoutSize(parent: ViewGroup, view: View) {
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(parent.width, View.MeasureSpec.EXACTLY)
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(parent.height, View.MeasureSpec.UNSPECIFIED)
+
+        val childWidth = ViewGroup.getChildMeasureSpec(
+            widthSpec,
+            parent.paddingLeft + parent.paddingRight,
+            view.layoutParams.width
+        )
+        val childHeight = ViewGroup.getChildMeasureSpec(
+            heightSpec,
+            parent.paddingTop + parent.paddingBottom,
+            view.layoutParams.height
+        )
+
+        view.measure(childWidth, childHeight)
+        view.layout(0, 0, view.measuredWidth, view.measuredHeight)
+    }
 }
