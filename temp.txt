@@ -1,18 +1,2 @@
-override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-    val topChild = parent.getChildAt(0) ?: return
-    val topChildPosition = parent.getChildAdapterPosition(topChild)
-    if (topChildPosition == RecyclerView.NO_POSITION) return
-
-    val currentHeader = getHeaderViewForItem(topChildPosition, parent)
-    fixLayoutSize(parent, currentHeader)
-
-    val contactPoint = currentHeader.bottom
-    val childInContact = getChildInContact(parent, contactPoint)
-
-    if (childInContact != null && isHeader(parent.getChildAdapterPosition(childInContact))) {
-        // Push up effect
-        moveHeader(c, currentHeader, childInContact)
-    } else {
-        drawHeader(c, currentHeader)
-    }
-}
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
