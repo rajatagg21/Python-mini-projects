@@ -1,62 +1,43 @@
-Perfect! Based on your XML layout, here’s the **fully integrated `DialogFragment` code** that:
+Got it — your goal is:
 
-* Displays the **progress bar** and live `X/Total` updates
-* Has a **cancel button** that cancels the coroutine
-* Uses your custom layout exactly as you posted
+* To **keep `NotificationsFragment` as the owner** of the prediction logic.
+* The `ProcessingDialogFragment` will be **dumb**: it only **shows progress** (`x/y` + progress bar).
+* Prediction starts **on button click** in `NotificationsFragment`.
+* `NotificationsFragment` will:
 
----
-
-### ✅ 1. XML: `res/layout/dialog_processing.xml`
-
-(You already have this, but for clarity):
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="24dp">
-
-    <TextView
-        android:id="@+id/dialog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Processing Notifications"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/progress_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="0/200 notifications processed" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
-</LinearLayout>
-```
+  * Launch the dialog
+  * Perform model inference on each notification
+  * Update progress on the dialog
+  * Handle cancellation (user pressing "Cancel")
 
 ---
 
-### ✅ 2. Kotlin: `ProcessingDialogFragment.kt`
+### ✅ Clean Division of Responsibility
+
+| `NotificationsFragment`          | `ProcessingDialogFragment`                |
+| -------------------------------- | ----------------------------------------- |
+| Owns the data and coroutine      | Only displays progress UI                 |
+| Runs the prediction loop         | Receives updates via `updateProgress()`   |
+| Cancels coroutine on user cancel | Just calls back via `onCancelRequested()` |
+
+---
+
+## ✅ 1. `ProcessingDialogFragment.kt`
+
+This fragment is now just a UI with:
+
+* Progress bar
+* Cancel button
+* One method: `updateProgress(current, total)`
+* A listener for "Cancel" button
 
 ```kotlin
 class ProcessingDialogFragment(
-    private val notifications: List<Notification>,
-    private val processItem: suspend (Notification) -> Unit,
-    private val onCompleted: () -> Unit = {},
-    private val onCancelled: () -> Unit = {}
+    private val onCancelRequested: () -> Unit
 ) : DialogFragment() {
 
     private var progressTextView: TextView? = null
     private var progressBar: ProgressBar? = null
-    private val processingScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(requireContext())
@@ -65,64 +46,24 @@ class ProcessingDialogFragment(
         progressTextView = view.findViewById(R.id.progress_text_view)
         progressBar = view.findViewById(R.id.progress_bar)
 
-        progressBar?.max = notifications.size
-        progressBar?.progress = 0
-
         val builder = AlertDialog.Builder(requireContext())
             .setView(view)
             .setCancelable(false)
             .setNegativeButton("Cancel") { _, _ ->
-                processingScope.cancel("User cancelled")
+                onCancelRequested()
             }
 
         return builder.create()
     }
 
-    override fun onStart() {
-        super.onStart()
-        startProcessing()
-    }
-
-    private fun startProcessing() {
-        processingScope.launch {
-            try {
-                val total = notifications.size
-
-                for ((index, notif) in notifications.withIndex()) {
-                    if (!isActive) break
-
-                    processItem(notif)
-
-                    withContext(Dispatchers.Main) {
-                        val current = index + 1
-                        progressTextView?.text = "$current/$total notifications processed"
-                        progressBar?.progress = current
-                    }
-                }
-
-                withContext(Dispatchers.Main) {
-                    if (isActive) {
-                        onCompleted()
-                        dismissAllowingStateLoss()
-                    }
-                }
-            } catch (e: CancellationException) {
-                withContext(Dispatchers.Main) {
-                    onCancelled()
-                    dismissAllowingStateLoss()
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Failed: ${e.message}", Toast.LENGTH_SHORT).show()
-                    dismissAllowingStateLoss()
-                }
-            }
-        }
+    fun updateProgress(current: Int, total: Int) {
+        progressTextView?.text = "$current/$total notifications processed"
+        progressBar?.max = total
+        progressBar?.progress = current
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        processingScope.cancel()
         progressTextView = null
         progressBar = null
     }
@@ -131,35 +72,74 @@ class ProcessingDialogFragment(
 
 ---
 
-### ✅ 3. How to Use It
-
-In your `Activity` or `Fragment`:
+## ✅ 2. Inside `NotificationsFragment.kt`
 
 ```kotlin
-fun startNotificationProcessing(notifications: List<Notification>) {
-    val dialog = ProcessingDialogFragment(
-        notifications = notifications,
-        processItem = { notif ->
-            delay(200) // Replace with your actual processing logic
-        },
-        onCompleted = {
-            Toast.makeText(this, "All notifications processed.", Toast.LENGTH_SHORT).show()
-        },
-        onCancelled = {
-            Toast.makeText(this, "Processing cancelled by user.", Toast.LENGTH_SHORT).show()
-        }
-    )
+class NotificationsFragment : Fragment() {
 
-    dialog.show(supportFragmentManager, "ProcessingDialog")
+    private var processingJob: Job? = null
+    private var dialog: ProcessingDialogFragment? = null
+
+    // This gets called on predict button click
+    fun onPredictClicked(notifications: List<Notification>) {
+        dialog = ProcessingDialogFragment(
+            onCancelRequested = {
+                processingJob?.cancel("User cancelled")
+            }
+        )
+
+        dialog?.show(parentFragmentManager, "progress")
+
+        processingJob = lifecycleScope.launch(Dispatchers.Default) {
+            val total = notifications.size
+
+            try {
+                for ((index, notif) in notifications.withIndex()) {
+                    // Make sure this is cooperative with cancellation
+                    process(notif)
+
+                    withContext(Dispatchers.Main) {
+                        dialog?.updateProgress(index + 1, total)
+                    }
+                }
+
+                withContext(Dispatchers.Main) {
+                    dialog?.dismissAllowingStateLoss()
+                    Toast.makeText(requireContext(), "All done", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: CancellationException) {
+                withContext(Dispatchers.Main) {
+                    dialog?.dismissAllowingStateLoss()
+                    Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private suspend fun process(notif: Notification) {
+        delay(200) // Your real model inference logic here
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        processingJob?.cancel()
+        dialog = null
+    }
 }
 ```
 
 ---
 
-### 🔧 Tips
+## ✅ Summary
 
-* Use `requireActivity().supportFragmentManager` if calling from a fragment.
-* You can also pass `Dispatchers.IO` if your `processItem` is I/O heavy.
-* Customize titles/messages or allow dynamic size via dialog arguments if needed.
+* `DialogFragment` is **pure UI** and stateless except `updateProgress`.
+* `NotificationsFragment` is **in control**: data, coroutine, cancellation.
+* Cancel button callback just cancels the coroutine in fragment.
 
-Let me know if you want this to support **LiveData** or **ViewModel** in MVVM.
+---
+
+### Let me know if:
+
+* You want this wrapped with a **ViewModel** (`StateFlow` or `LiveData`).
+* You want a **determinate progress bar with percentage**.
+* You’re also showing inference results back in the UI after dialog closes.
