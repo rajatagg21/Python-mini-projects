@@ -1,44 +1,50 @@
-Great—here’s the **enhanced version** with **cancellation support** built into the `DialogFragment`. The fragment itself manages the processing coroutine, exposes a cancel button, and lets the host know if the user aborted.
+Perfect! Based on your XML layout, here’s the **fully integrated `DialogFragment` code** that:
+
+* Displays the **progress bar** and live `X/Total` updates
+* Has a **cancel button** that cancels the coroutine
+* Uses your custom layout exactly as you posted
 
 ---
 
-## 1. `res/layout/progress_dialog.xml`
+### ✅ 1. XML: `res/layout/dialog_processing.xml`
+
+(You already have this, but for clarity):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Processing Notifications"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/progress_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="0/200 notifications processed" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:indeterminate="true" />
-
-    <TextView
-        android:id="@+id/progressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Processing 0/0"
-        android:paddingTop="16dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:paddingTop="8dp"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginTop="8dp" />
 </LinearLayout>
 ```
 
 ---
 
-## 2. `ProcessingDialogFragment.kt`
+### ✅ 2. Kotlin: `ProcessingDialogFragment.kt`
 
 ```kotlin
 class ProcessingDialogFragment(
@@ -48,30 +54,28 @@ class ProcessingDialogFragment(
     private val onCancelled: () -> Unit = {}
 ) : DialogFragment() {
 
-    private var progressText: TextView? = null
-    private var statusText: TextView? = null
-
-    // Own scope so we can cancel independently
+    private var progressTextView: TextView? = null
+    private var progressBar: ProgressBar? = null
     private val processingScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
-    private var dialogInstance: AlertDialog? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view = LayoutInflater.from(requireContext()).inflate(R.layout.progress_dialog, null)
-        progressText = view.findViewById(R.id.progressText)
-        statusText = view.findViewById(R.id.statusText)
+        val view = LayoutInflater.from(requireContext())
+            .inflate(R.layout.dialog_processing, null)
+
+        progressTextView = view.findViewById(R.id.progress_text_view)
+        progressBar = view.findViewById(R.id.progress_bar)
+
+        progressBar?.max = notifications.size
+        progressBar?.progress = 0
 
         val builder = AlertDialog.Builder(requireContext())
-            .setTitle("Processing")
             .setView(view)
             .setCancelable(false)
             .setNegativeButton("Cancel") { _, _ ->
-                // User tapped cancel
-                statusText?.text = "Cancelling..."
                 processingScope.cancel("User cancelled")
             }
 
-        dialogInstance = builder.create()
-        return dialogInstance as AlertDialog
+        return builder.create()
     }
 
     override fun onStart() {
@@ -80,103 +84,82 @@ class ProcessingDialogFragment(
     }
 
     private fun startProcessing() {
-        val total = notifications.size
         processingScope.launch {
             try {
-                for ((index, notif) in notifications.withIndex()) {
-                    if (!isActive) break // cooperative cancellation
+                val total = notifications.size
 
-                    processItem(notif) // long-running work
+                for ((index, notif) in notifications.withIndex()) {
+                    if (!isActive) break
+
+                    processItem(notif)
 
                     withContext(Dispatchers.Main) {
-                        updateProgress(index + 1, total)
+                        val current = index + 1
+                        progressTextView?.text = "$current/$total notifications processed"
+                        progressBar?.progress = current
                     }
                 }
 
                 withContext(Dispatchers.Main) {
-                    if (processingScope.coroutineContext[Job]?.isCancelled == true) {
-                        statusText?.text = "Cancelled"; 
-                        onCancelled()
-                    } else {
+                    if (isActive) {
                         onCompleted()
+                        dismissAllowingStateLoss()
                     }
-                    dismissAllowingStateLoss()
                 }
             } catch (e: CancellationException) {
                 withContext(Dispatchers.Main) {
-                    statusText?.text = "Cancelled"
                     onCancelled()
                     dismissAllowingStateLoss()
                 }
-            } catch (t: Throwable) {
+            } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    statusText?.text = "Failed: ${t.message}"
+                    Toast.makeText(requireContext(), "Failed: ${e.message}", Toast.LENGTH_SHORT).show()
                     dismissAllowingStateLoss()
                 }
             }
         }
     }
 
-    private fun updateProgress(current: Int, total: Int) {
-        progressText?.text = "Processing $current/$total"
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         processingScope.cancel()
-        progressText = null
-        statusText = null
+        progressTextView = null
+        progressBar = null
     }
 }
 ```
 
 ---
 
-## 3. Usage Example in an Activity or Fragment
+### ✅ 3. How to Use It
+
+In your `Activity` or `Fragment`:
 
 ```kotlin
 fun startNotificationProcessing(notifications: List<Notification>) {
     val dialog = ProcessingDialogFragment(
         notifications = notifications,
         processItem = { notif ->
-            // Simulate or perform real work; make sure it cooperates with cancellation
-            // Example placeholder:
-            delay(200) // replace with your inference/process(notif)
+            delay(200) // Replace with your actual processing logic
         },
         onCompleted = {
-            // Called when all items processed successfully
-            Toast.makeText(this, "Processing complete", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "All notifications processed.", Toast.LENGTH_SHORT).show()
         },
         onCancelled = {
-            // Called if user cancelled
-            Toast.makeText(this, "Processing cancelled", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Processing cancelled by user.", Toast.LENGTH_SHORT).show()
         }
     )
 
-    dialog.show(supportFragmentManager, "processing_dialog")
-}
-```
-
-> **Important:** In your actual `processItem` implementation (model inference etc.), ensure it checks for cancellation cooperatively if you have loops inside. For example:
-
-```kotlin
-suspend fun process(notification: Notification) {
-    // If you have internal loops:
-    for (chunk in notification.chunks) {
-        ensureActive() // throws if cancelled
-        // do chunk work
-    }
+    dialog.show(supportFragmentManager, "ProcessingDialog")
 }
 ```
 
 ---
 
-### Key Behaviors
+### 🔧 Tips
 
-* **Cancel button** cancels the coroutine scope, stops further processing, updates status, and invokes `onCancelled`.
-* **Completion callback** fires only if all items finished without cancellation.
-* **Lifecycle-safe**: scope is cancelled when fragment view is destroyed to avoid leaks.
+* Use `requireActivity().supportFragmentManager` if calling from a fragment.
+* You can also pass `Dispatchers.IO` if your `processItem` is I/O heavy.
+* Customize titles/messages or allow dynamic size via dialog arguments if needed.
 
----
-
-Do you want a variant that exposes this via a shared `ViewModel`/`StateFlow` instead, or one that updates a persistent foreground notification in parallel?
+Let me know if you want this to support **LiveData** or **ViewModel** in MVVM.
