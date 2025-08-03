@@ -1,152 +1,24 @@
-You're right again — thank you for catching that inconsistency.
+override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    val topChild = parent.getChildAt(0) ?: return
+    val topChildPosition = parent.getChildAdapterPosition(topChild)
+    if (topChildPosition == RecyclerView.NO_POSITION) return
 
-Let me now give you the **final clean implementation** of the `StickyHeaderItemDecoration` class, where:
-
-* ✅ You **don’t need to pass adapter explicitly**.
-* ✅ You just pass the `RecyclerView` and your own `StickyHeaderInterface`.
-* ✅ Inside the decoration logic, you call `recyclerView.adapter` dynamically — so the decoration is generic and adapter-agnostic.
-
----
-
-## ✅ Final `StickyHeaderItemDecoration.kt`
-
-```kotlin
-import android.graphics.Canvas
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-
-class StickyHeaderItemDecoration(
-    private val recyclerView: RecyclerView,
-    private val listener: StickyHeaderInterface
-) : RecyclerView.ItemDecoration() {
-
-    private var stickyHeaderView: View? = null
-
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        val topChild = parent.getChildAt(0) ?: return
-        val topChildPosition = parent.getChildAdapterPosition(topChild)
-        if (topChildPosition == RecyclerView.NO_POSITION) return
-
-        val headerPosition = listener.getHeaderPositionForItem(topChildPosition)
-        val currentHeader = getHeaderViewForItem(headerPosition, parent)
-        fixLayoutSize(parent, currentHeader)
-
-        val contactPoint = currentHeader.bottom
-        val childInContact = getChildInContact(parent, contactPoint)
-
-        if (childInContact != null && listener.isHeader(parent.getChildAdapterPosition(childInContact))) {
-            moveHeader(c, currentHeader, childInContact)
-            return
-        }
-
-        drawHeader(c, currentHeader)
+    // Skip drawing sticky header if the top child *is* the header and fully visible
+    if (listener.isHeader(topChildPosition) && topChild.top == 0) {
+        return
     }
 
-    private fun getHeaderViewForItem(headerPosition: Int, parent: RecyclerView): View {
-        val layoutResId = listener.getHeaderLayout(headerPosition)
-        val header = LayoutInflater.from(parent.context).inflate(layoutResId, parent, false)
-        listener.bindHeaderData(header, headerPosition)
-        return header
+    val headerPosition = listener.getHeaderPositionForItem(topChildPosition)
+    val currentHeader = getHeaderViewForItem(headerPosition, parent)
+    fixLayoutSize(parent, currentHeader)
+
+    val contactPoint = currentHeader.bottom
+    val childInContact = getChildInContact(parent, contactPoint)
+
+    if (childInContact != null && listener.isHeader(parent.getChildAdapterPosition(childInContact))) {
+        moveHeader(c, currentHeader, childInContact)
+        return
     }
 
-    private fun drawHeader(c: Canvas, header: View) {
-        c.save()
-        c.translate(0f, 0f)
-        header.draw(c)
-        c.restore()
-    }
-
-    private fun moveHeader(c: Canvas, currentHeader: View, nextHeader: View) {
-        c.save()
-        c.translate(0f, (nextHeader.top - currentHeader.height).toFloat())
-        currentHeader.draw(c)
-        c.restore()
-    }
-
-    private fun getChildInContact(parent: RecyclerView, contactPoint: Int): View? {
-        for (i in 0 until parent.childCount) {
-            val child = parent.getChildAt(i)
-            if (child.top <= contactPoint && child.bottom >= contactPoint) {
-                return child
-            }
-        }
-        return null
-    }
-
-    private fun fixLayoutSize(parent: ViewGroup, view: View) {
-        // Specs
-        val widthSpec = View.MeasureSpec.makeMeasureSpec(parent.width, View.MeasureSpec.EXACTLY)
-        val heightSpec = View.MeasureSpec.makeMeasureSpec(parent.height, View.MeasureSpec.UNSPECIFIED)
-
-        // Measure and layout
-        val childWidth = ViewGroup.getChildMeasureSpec(
-            widthSpec,
-            parent.paddingLeft + parent.paddingRight,
-            view.layoutParams?.width ?: ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        val childHeight = ViewGroup.getChildMeasureSpec(
-            heightSpec,
-            parent.paddingTop + parent.paddingBottom,
-            view.layoutParams?.height ?: ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-
-        view.measure(childWidth, childHeight)
-        view.layout(0, 0, view.measuredWidth, view.measuredHeight)
-    }
-
-    interface StickyHeaderInterface {
-        fun getHeaderPositionForItem(itemPosition: Int): Int
-        fun getHeaderLayout(headerPosition: Int): Int
-        fun bindHeaderData(header: View, headerPosition: Int)
-        fun isHeader(itemPosition: Int): Boolean
-    }
+    drawHeader(c, currentHeader)
 }
-```
-
----
-
-## 🔧 Usage Reminder in Fragment
-
-In your fragment, where you already have your adapter and data:
-
-```kotlin
-val stickyHeaderDecoration = StickyHeaderItemDecoration(recyclerView,
-    object : StickyHeaderItemDecoration.StickyHeaderInterface {
-        override fun getHeaderPositionForItem(itemPosition: Int): Int {
-            var position = itemPosition
-            while (position >= 0) {
-                if (adapter.getItemViewType(position) == TYPE_HEADER) return position
-                position--
-            }
-            return 0
-        }
-
-        override fun getHeaderLayout(headerPosition: Int): Int = R.layout.item_notif_header
-
-        override fun bindHeaderData(header: View, headerPosition: Int) {
-            val item = adapter.currentList[headerPosition]
-            if (item is SectionedItem.Header) {
-                header.findViewById<TextView>(R.id.header_text).text = item.label
-            }
-        }
-
-        override fun isHeader(itemPosition: Int): Boolean {
-            return adapter.getItemViewType(itemPosition) == TYPE_HEADER
-        }
-    }
-)
-
-recyclerView.addItemDecoration(stickyHeaderDecoration)
-```
-
----
-
-## ✅ Key Benefits of this Design
-
-* Adapter remains clean and focused on binding data.
-* No need to modify or subclass the adapter.
-* StickyHeader logic lives outside and is reusable across lists.
-
-Let me know if you want me to plug this into your specific codebase (with your adapter class and model sealed class)!
