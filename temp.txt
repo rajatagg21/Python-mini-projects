@@ -1,169 +1,182 @@
-Yes, you absolutely can show this live progress count inside an `AlertDialog`. The key is to create a custom layout for the dialog that contains a `TextView` and a `ProgressBar`, then set that custom layout on the `AlertDialog.Builder`.
+Great—here’s the **enhanced version** with **cancellation support** built into the `DialogFragment`. The fragment itself manages the processing coroutine, exposes a cancel button, and lets the host know if the user aborted.
 
-This is a common and effective way to block the user's interaction with the main UI while a task is running, giving them a clear indication of progress.
+---
 
-Here's how you'd typically do it, following a robust and modern approach using a `DialogFragment` to manage the dialog's lifecycle. This prevents issues with screen rotations and ensures the dialog is properly managed.
-
-### Step 1: Create a Custom Layout
-
-First, create a new XML layout file for your custom dialog. Let's call it `dialog_progress.xml`. This layout will contain the UI elements for the progress.
-
-**`res/layout/dialog_progress.xml`**
+## 1. `res/layout/progress_dialog.xml`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
-
-    <TextView
-        android:id="@+id/dialog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Processing Notifications"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/progress_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="0/200 notifications processed" />
+    android:padding="24dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:indeterminate="true" />
 
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Processing 0/0"
+        android:paddingTop="16dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:paddingTop="8dp"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 </LinearLayout>
 ```
 
------
+---
 
-### Step 2: Create a `DialogFragment`
-
-Instead of creating the `AlertDialog` directly in your `Fragment`, it's best practice to use a `DialogFragment`. This class manages the dialog's lifecycle, ensuring it's handled correctly.
+## 2. `ProcessingDialogFragment.kt`
 
 ```kotlin
-import android.app.AlertDialog
-import android.app.Dialog
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+class ProcessingDialogFragment(
+    private val notifications: List<Notification>,
+    private val processItem: suspend (Notification) -> Unit,
+    private val onCompleted: () -> Unit = {},
+    private val onCancelled: () -> Unit = {}
+) : DialogFragment() {
 
-class ProgressDialogFragment : DialogFragment() {
+    private var progressText: TextView? = null
+    private var statusText: TextView? = null
 
-    // These LiveData instances will be observed to update the dialog's UI
-    private val _progress = MutableLiveData<Pair<Int, Int>>()
-    val progress: LiveData<Pair<Int, Int>> = _progress
-
-    private var progressTextView: TextView? = null
-    private var progressBar: ProgressBar? = null
+    // Own scope so we can cancel independently
+    private val processingScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private var dialogInstance: AlertDialog? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(requireActivity())
-        val inflater = LayoutInflater.from(requireContext())
-        val view = inflater.inflate(R.layout.dialog_progress, null)
+        val view = LayoutInflater.from(requireContext()).inflate(R.layout.progress_dialog, null)
+        progressText = view.findViewById(R.id.progressText)
+        statusText = view.findViewById(R.id.statusText)
 
-        progressTextView = view.findViewById(R.id.progress_text_view)
-        progressBar = view.findViewById(R.id.progress_bar)
-
-        builder.setView(view)
-            // Prevent the user from dismissing the dialog by tapping outside or using the back button
+        val builder = AlertDialog.Builder(requireContext())
+            .setTitle("Processing")
+            .setView(view)
             .setCancelable(false)
+            .setNegativeButton("Cancel") { _, _ ->
+                // User tapped cancel
+                statusText?.text = "Cancelling..."
+                processingScope.cancel("User cancelled")
+            }
 
-        return builder.create()
+        dialogInstance = builder.create()
+        return dialogInstance as AlertDialog
     }
 
     override fun onStart() {
         super.onStart()
-        // Start observing the LiveData here, after the dialog view has been created
-        progress.observe(this) { (current, total) ->
-            updateProgress(current, total)
-        }
+        startProcessing()
     }
 
-    fun updateProgress(current: Int, total: Int) {
-        // This is a public method to update the LiveData from the outside
-        _progress.value = Pair(current, total)
+    private fun startProcessing() {
+        val total = notifications.size
+        processingScope.launch {
+            try {
+                for ((index, notif) in notifications.withIndex()) {
+                    if (!isActive) break // cooperative cancellation
 
-        // Directly update the views if they are available (e.g., when the dialog is first shown)
-        progressTextView?.text = "$current/$total notifications processed"
-        progressBar?.max = total
-        progressBar?.progress = current
-    }
+                    processItem(notif) // long-running work
 
-    // You can also add a method to dismiss the dialog when the task is complete
-    fun dismissIfFinished() {
-        progress.value?.let { (current, total) ->
-            if (current == total) {
-                dismiss()
-            }
-        }
-    }
-}
-```
-
------
-
-### Step 3: Integrate with your Main `Fragment`
-
-Now, your main `Fragment` can launch this `DialogFragment` and use its public method to update the progress.
-
-```kotlin
-class MyFragment : Fragment(R.layout.fragment_your) {
-
-    private lateinit var progressDialog: ProgressDialogFragment
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Assume you have a button to start the process
-        val startButton: Button = view.findViewById(R.id.start_button)
-        startButton.setOnClickListener {
-            // Show the dialog
-            progressDialog = ProgressDialogFragment()
-            progressDialog.show(childFragmentManager, "progress_dialog")
-
-            // Start the background process
-            startProcessingNotifications()
-        }
-    }
-
-    private fun startProcessingNotifications() {
-        val totalNotifications = 200
-
-        // Use a coroutine for background work
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            for (i in 1..totalNotifications) {
-                delay(100) // Simulate work
-
-                // Update the dialog on the main thread
-                withContext(Dispatchers.Main) {
-                    if (isAdded) { // Check if Fragment is still attached
-                        progressDialog.updateProgress(i, totalNotifications)
+                    withContext(Dispatchers.Main) {
+                        updateProgress(index + 1, total)
                     }
                 }
-            }
-            
-            // Task is complete, dismiss the dialog
-            withContext(Dispatchers.Main) {
-                if (isAdded) {
-                    progressDialog.dismiss()
+
+                withContext(Dispatchers.Main) {
+                    if (processingScope.coroutineContext[Job]?.isCancelled == true) {
+                        statusText?.text = "Cancelled"; 
+                        onCancelled()
+                    } else {
+                        onCompleted()
+                    }
+                    dismissAllowingStateLoss()
+                }
+            } catch (e: CancellationException) {
+                withContext(Dispatchers.Main) {
+                    statusText?.text = "Cancelled"
+                    onCancelled()
+                    dismissAllowingStateLoss()
+                }
+            } catch (t: Throwable) {
+                withContext(Dispatchers.Main) {
+                    statusText?.text = "Failed: ${t.message}"
+                    dismissAllowingStateLoss()
                 }
             }
         }
     }
+
+    private fun updateProgress(current: Int, total: Int) {
+        progressText?.text = "Processing $current/$total"
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        processingScope.cancel()
+        progressText = null
+        statusText = null
+    }
 }
 ```
 
-This approach is highly recommended for any dialog that needs to be updated dynamically. It's clean, robust, and correctly handles the Android lifecycle, making sure your app doesn't crash or behave unexpectedly on a screen rotation.
+---
+
+## 3. Usage Example in an Activity or Fragment
+
+```kotlin
+fun startNotificationProcessing(notifications: List<Notification>) {
+    val dialog = ProcessingDialogFragment(
+        notifications = notifications,
+        processItem = { notif ->
+            // Simulate or perform real work; make sure it cooperates with cancellation
+            // Example placeholder:
+            delay(200) // replace with your inference/process(notif)
+        },
+        onCompleted = {
+            // Called when all items processed successfully
+            Toast.makeText(this, "Processing complete", Toast.LENGTH_SHORT).show()
+        },
+        onCancelled = {
+            // Called if user cancelled
+            Toast.makeText(this, "Processing cancelled", Toast.LENGTH_SHORT).show()
+        }
+    )
+
+    dialog.show(supportFragmentManager, "processing_dialog")
+}
+```
+
+> **Important:** In your actual `processItem` implementation (model inference etc.), ensure it checks for cancellation cooperatively if you have loops inside. For example:
+
+```kotlin
+suspend fun process(notification: Notification) {
+    // If you have internal loops:
+    for (chunk in notification.chunks) {
+        ensureActive() // throws if cancelled
+        // do chunk work
+    }
+}
+```
+
+---
+
+### Key Behaviors
+
+* **Cancel button** cancels the coroutine scope, stops further processing, updates status, and invokes `onCancelled`.
+* **Completion callback** fires only if all items finished without cancellation.
+* **Lifecycle-safe**: scope is cancelled when fragment view is destroyed to avoid leaks.
+
+---
+
+Do you want a variant that exposes this via a shared `ViewModel`/`StateFlow` instead, or one that updates a persistent foreground notification in parallel?
