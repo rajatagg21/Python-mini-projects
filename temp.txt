@@ -1,2 +1,22 @@
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+import shap
+
+# Load your model
+model_name = "nreimers/mMiniLMv2-L6-H384-distilled-from-XLMR-Large"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
+# Create classification pipeline
+pipe = pipeline("text-classification", model=model, tokenizer=tokenizer, return_all_scores=True)
+
+# Sample text
+text = "Your payment has been successfully processed and the receipt is attached."
+
+# Wrap pipeline for SHAP
+explainer = shap.Explainer(pipe)
+
+# Explain prediction
+shap_values = explainer([text])
+
+# Plot tokens with importance
+shap.plots.text(shap_values[0])
