@@ -104,6 +104,70 @@ Your appointment is on <date> or maybe <date>. Let's meet <date> or <date> eveni
 ### ✅ Why this is useful:
 
 * Your model learns better **semantic categories** like `Event`, `Booking`, `Reminder`, etc., without overfitting to specific dates or terms.
+
+
+
+You can dynamically build a regular expression from a list of **Top-Level Domains (TLDs)** in **Python** like this:
+
+---
+
+### ✅ Step-by-step in Python:
+
+```python
+import re
+
+# 1. Your list of TLDs
+tlds = ['com', 'org', 'net', 'in', 'co']
+
+# 2. Convert to a regex group
+tld_pattern = r'\.(' + '|'.join(map(re.escape, tlds)) + r')\b'
+
+# 3. Use it in regex
+pattern = re.compile(rf'\b\w+{tld_pattern}')
+
+# 4. Test
+text = "Visit google.com, example.org or mysite.in for more info."
+matches = pattern.findall(text)
+
+print(matches)  # Output: [('com',), ('org',), ('in',)]
+```
+
+---
+
+### 🔍 Explanation:
+
+* `join(map(re.escape, tlds))` → ensures special characters in TLDs (if any) are safely escaped.
+* `\.()` → matches the dot and groups the TLD.
+* `\b` → ensures word boundary, avoids matching mid-words like `.compute`.
+
+---
+
+### ✅ If you want full domain matches (like `google.com`, `example.org`):
+
+```python
+pattern = re.compile(rf'\b[\w.-]+{tld_pattern}')
+matches = pattern.findall(text)
+```
+
+---
+
+### 💡 In Kotlin (for Android):
+
+If you're doing similar in **Kotlin**, here’s how:
+
+```kotlin
+val tlds = listOf("com", "org", "net", "in", "co")
+val tldPattern = "\\.(${tlds.joinToString("|")})\\b".toRegex()
+
+val text = "Visit google.com or example.net"
+val matches = tldPattern.findAll(text)
+
+for (match in matches) {
+    println(match.value)  // prints .com, .net
+}
+```
+
+Let me know if you want to extract full URLs, just TLDs, or validate domain names using this regex.
 * Uniformity helps with **better generalization**, especially in low-resource or long-tail cases.
 
 ---
