@@ -1,1 +1,111 @@
-₹$€¥
+Great question — handling **rigid date formats** alongside **informal or relative date expressions** is a key preprocessing step in any NLP pipeline, especially if you're aiming for **semantic generalization** (like tagging all time-related tokens as `<date>` or `<time>`).
+
+---
+
+### ✅ Your Goal:
+
+You want to **normalize all date-like expressions** (both absolute and relative) such as:
+
+#### ✅ Rigid Date Formats
+
+* `12th July`, `July 14th`, `14 July`, `Aug 1`, `1st Sept`
+  → → `<date>`
+
+#### ✅ Relative/Soft Expressions
+
+* `today`, `tomorrow`, `yesterday`, `tonight`, `this weekend`, `Sunday`, `next Friday`, etc.
+  → → `<date>`
+
+---
+
+### ✅ Step-by-Step Plan
+
+---
+
+#### 1. **Regex-based preprocessing for rigid formats**
+
+Use regex to match various formats like:
+
+* `\d{1,2}(st|nd|rd|th)?\s+(January|Jan|...|Dec)`
+* `(January|Jan|...|Dec)\s+\d{1,2}(st|nd|rd|th)?`
+* Optionally, handle 3rd format: `14/07/2023` → `<date>` (international)
+
+```python
+import re
+
+def replace_rigid_dates(text):
+    months = r'(January|February|March|April|May|June|July|August|September|October|November|December|' \
+             r'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept|Oct|Nov|Dec)'
+
+    # Match things like "12th July" or "12 July"
+    pattern1 = rf'\b\d{{1,2}}(st|nd|rd|th)?\s+{months}\b'
+
+    # Match things like "July 12th" or "Jul 12"
+    pattern2 = rf'\b{months}\s+\d{{1,2}}(st|nd|rd|th)?\b'
+
+    # Optionally match formats like 12/07/2023 or 14-07-2023
+    pattern3 = r'\b\d{1,2}[/-]\d{1,2}([/-]\d{2,4})?\b'
+
+    for pattern in [pattern1, pattern2, pattern3]:
+        text = re.sub(pattern, '<date>', text, flags=re.IGNORECASE)
+
+    return text
+```
+
+---
+
+#### 2. **Soft pattern matching for relative/weekday phrases**
+
+Maintain a list of common date-related soft expressions and replace them:
+
+```python
+def replace_soft_dates(text):
+    soft_dates = [
+        'today', 'tomorrow', 'yesterday', 'tonight', 'this morning', 'this evening',
+        'next week', 'next month', 'this weekend', 'next weekend', 'day after tomorrow',
+        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'
+    ]
+    
+    # Use word boundaries and ignore case
+    for word in soft_dates:
+        text = re.sub(rf'\b{word}\b', '<date>', text, flags=re.IGNORECASE)
+    
+    return text
+```
+
+---
+
+#### ✅ Combine Both:
+
+```python
+def normalize_dates(text):
+    text = replace_rigid_dates(text)
+    text = replace_soft_dates(text)
+    return text
+```
+
+---
+
+### 🔍 Example:
+
+```python
+sample = "Your appointment is on 12th July or maybe July 14th. Let's meet this Sunday or tomorrow evening. Offer ends 14/07/2023!"
+print(normalize_dates(sample))
+```
+
+#### ✅ Output:
+
+```
+Your appointment is on <date> or maybe <date>. Let's meet <date> or <date> evening. Offer ends <date>!
+```
+
+---
+
+### ✅ Why this is useful:
+
+* Your model learns better **semantic categories** like `Event`, `Booking`, `Reminder`, etc., without overfitting to specific dates or terms.
+* Uniformity helps with **better generalization**, especially in low-resource or long-tail cases.
+
+---
+
+Let me know if you want to tag them as `<date_rigid>` vs `<date_soft>` or extract + normalize to actual date objects (`datetime`) for downstream processing.
