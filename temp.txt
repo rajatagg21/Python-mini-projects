@@ -1,208 +1,40 @@
-Got it! Here's an expanded and **masked list of date expressions** for your use case, including placeholders for `<weekday>`, `<month>`, `<num>`, and `<date>`, to give you full control and flexibility during sample generation or masking:
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
----
+class NumberMaskingTest {
 
-### ✅ **Relative Date Expressions**
+    @Test
+    fun testPositiveCases() {
+        val testCases = mapOf(
+            "1000.000" to "<num>",
+            "$1,000" to "<num>",
+            "1,00,000.99" to "<num>",
+            "=1000.000" to "<num>",
+            "1,000/-" to "<num>",
+            "10.89%" to "<num>",
+            "₹1,000/-" to "<num>",
+            "abc 1,000.00 xyz" to "abc <num> xyz",
+            "=$10,000.50" to "=<num>",
+            "Total is =1000.000" to "Total is <num>"
+        )
 
-```python
-relative_dates = [
-    "today",
-    "tomorrow",
-    "yesterday",
-    "tonight",
-    "this morning",
-    "this evening",
-    "this afternoon",
-    "this weekend",
-    "next weekend",
-    "last weekend",
-    "next week",
-    "last week",
-    "next month",
-    "last month",
-    "next year",
-    "last year",
-    "in <num> days",
-    "in <num> weeks",
-    "in <num> months",
-    "in <num> years",
-    "<num> days ago",
-    "<num> weeks ago",
-    "<num> months ago",
-    "<num> years ago",
-    "after <num> days",
-    "before <num> days",
-    "within <num> days"
-]
-```
+        for ((input, expected) in testCases) {
+            assertEquals(expected, maskNumbers(input), "Failed for: '$input'")
+        }
+    }
 
----
+    @Test
+    fun testNegativeCases() {
+        val negativeCases = listOf(
+            "abc1000",        // attached to letters
+            "1000abc",        // suffix word characters
+            "1,,000",         // invalid commas
+            "1.000.000",      // multiple decimals
+            "1,00,000,000,000,000" // excessive commas
+        )
 
-### ✅ **Absolute Date Expressions (with masks)**
-
-```python
-absolute_dates = [
-    "<num> <month>",               # 14 July
-    "<month> <num>",              # July 14
-    "<num>th <month>",            # 14th July
-    "<month> <num>th",            # July 14th
-    "<num> <month> <num>",        # 14 July 2025
-    "<month> <num>, <num>",       # July 14, 2025
-    "<weekday>, <num> <month>",   # Friday, 14 July
-    "<weekday>, <num>th <month>", # Friday, 14th July
-    "<weekday>, <month> <num>",   # Friday, July 14
-    "<weekday>, <month> <num>, <num>", # Friday, July 14, 2025
-    "<weekday>, <num>th <month>, <num>", # Friday, 14th July, 2025
-    "<num>/<num>/<num>",          # 14/07/2025
-    "<num>-<num>-<num>",          # 14-07-2025
-    "<num>.<num>.<num>",          # 14.07.2025
-    "<num>th of <month>",         # 14th of July
-    "on <num> <month>",
-    "on <num>th <month>",
-    "at <num> AM on <num> <month>",
-    "at <num> PM, <month> <num>",
-    "morning of <num> <month>",
-    "evening of <month> <num>"
-]
-
-Yes, you're absolutely right — **real-world usage of weekdays and months** includes:
-
-* **Full names and abbreviations**
-* **Various casings (title case, lowercase, etc.)**
-* **Combinations with suffixes like "th", commas, etc.**
-
-Here’s how you should prepare your lists for **robust regex matching** or sample generation:
-
----
-
-### ✅ **Weekday Variants**
-
-```python
-weekdays = [
-    "Monday", "Mon",
-    "Tuesday", "Tue", "Tues",
-    "Wednesday", "Wed",
-    "Thursday", "Thu", "Thurs",
-    "Friday", "Fri",
-    "Saturday", "Sat",
-    "Sunday", "Sun"
-]
-```
-
-> You can lowercase these during regex matching or normalization to improve matching performance.
-
----
-
-### ✅ **Month Variants**
-
-```python
-months = [
-    "January", "Jan",
-    "February", "Feb",
-    "March", "Mar",
-    "April", "Apr",
-    "May",
-    "June", "Jun",
-    "July", "Jul",
-    "August", "Aug",
-    "September", "Sep", "Sept",
-    "October", "Oct",
-    "November", "Nov",
-    "December", "Dec"
-]
-```
-
----
-
-### ✅ Regex Example for Matching Weekdays or Months
-
-You can dynamically generate regex groups like this in Python:
-
-```python
-import re
-
-# Escape all values in case some have regex chars
-weekdays = [re.escape(x) for x in weekdays]
-months = [re.escape(x) for x in months]
-
-weekday_pattern = r"\b(" + "|".join(weekdays) + r")\b"
-month_pattern = r"\b(" + "|".join(months) + r")\b"
-```
-
-Then use these in regex:
-
-```python
-re.sub(weekday_pattern, "<weekday>", text)
-re.sub(month_pattern, "<month>", text)
-```
-
----
-
-### ⚠️ Optional: Handle Case Insensitivity
-
-Pass `flags=re.IGNORECASE` if you're not already lowercasing the input.
-
-```python
-re.sub(weekday_pattern, "<weekday>", text, flags=re.IGNORECASE)
-```
-
----
-
-Would you like me to give you a final function that replaces weekdays and months in a sentence with `<weekday>` and `<month>`?
-
-import pandas as pd
-import random
-import re
-
-# Sample input
-df = pd.DataFrame({
-    'text': [
-        "Let's meet on <date>.",
-        "Your appointment is scheduled for <date>.",
-        "Reminder: <date> is your exam date.",
-        "Join us on <date> for the event."
-    ]
-})
-
-# Lists
-weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-months = ["January", "February", "March", "April", "May", "June",
-          "July", "August", "September", "October", "November", "December"]
-
-# Date patterns
-date_patterns = [
-    "<weekday>, <month> <num>",
-    "<month> <num>",
-    "<num> <month>",
-    "<weekday>",
-    "<month>",
-    "<month> <num>, 2025",
-    "<weekday>, <num> <month> 2025"
-]
-
-# Function to populate a pattern
-def generate_date_sample(pattern):
-    weekday = random.choice(weekdays)
-    month = random.choice(months)
-    num = str(random.randint(1, 31))
-
-    return (
-        pattern.replace("<weekday>", weekday)
-               .replace("<month>", month)
-               .replace("<num>", num)
-    )
-
-# Apply on DataFrame
-def replace_date(text):
-    if "<date>" not in text:
-        return text
-    pattern = random.choice(date_patterns)
-    date_value = generate_date_sample(pattern)
-    return text.replace("<date>", date_value)
-
-# Replace in DataFrame
-df['text'] = df['text'].apply(replace_date)
-
-# View updated DataFrame
-import caas_jupyter_tools as tools; tools.display_dataframe_to_user(name="Populated Date Texts", dataframe=df)
-
+        for (input in negativeCases) {
+            assertEquals(input, maskNumbers(input), "Incorrectly masked: '$input'")
+        }
+    }
+}
