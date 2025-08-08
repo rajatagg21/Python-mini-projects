@@ -1,40 +1,59 @@
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import torch
+from transformers import AutoTokenizer, AutoModel
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
-class NumberMaskingTest {
+# 1. Load model & tokenizer
+model_name = "nreimers/mMiniLMv2-L6-H384-distilled-from-XLMR-Large"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModel.from_pretrained(model_name)
+model.eval()
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = model.to(device)
 
-    @Test
-    fun testPositiveCases() {
-        val testCases = mapOf(
-            "1000.000" to "<num>",
-            "$1,000" to "<num>",
-            "1,00,000.99" to "<num>",
-            "=1000.000" to "<num>",
-            "1,000/-" to "<num>",
-            "10.89%" to "<num>",
-            "₹1,000/-" to "<num>",
-            "abc 1,000.00 xyz" to "abc <num> xyz",
-            "=$10,000.50" to "=<num>",
-            "Total is =1000.000" to "Total is <num>"
-        )
+# 2. Example text samples & labels
+texts = [
+    "Stock market rises after Fed decision",
+    "Your train will arrive in 5 minutes",
+    "Get 50% off on your next purchase",
+    "Tesla shares drop 3% after earnings",
+    "Flight to New York delayed by 2 hours"
+]
+labels = ["finance", "travel_commute", "promotion", "finance", "travel_commute"]
 
-        for ((input, expected) in testCases) {
-            assertEquals(expected, maskNumbers(input), "Failed for: '$input'")
-        }
-    }
+# 3. Encode labels for coloring
+le = LabelEncoder()
+label_ids = le.fit_transform(labels)
 
-    @Test
-    fun testNegativeCases() {
-        val negativeCases = listOf(
-            "abc1000",        // attached to letters
-            "1000abc",        // suffix word characters
-            "1,,000",         // invalid commas
-            "1.000.000",      // multiple decimals
-            "1,00,000,000,000,000" // excessive commas
-        )
+# 4. Function for mean pooling
+def mean_pooling(model_output, attention_mask):
+    token_embeddings = model_output.last_hidden_state  # [batch, seq, hidden]
+    input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+    return (token_embeddings * input_mask_expanded).sum(1) / input_mask_expanded.sum(1)
 
-        for (input in negativeCases) {
-            assertEquals(input, maskNumbers(input), "Incorrectly masked: '$input'")
-        }
-    }
-}
+# 5. Get embeddings with mean pooling
+embeddings = []
+with torch.no_grad():
+    for text in texts:
+        inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128).to(device)
+        outputs = model(**inputs)
+        sentence_embedding = mean_pooling(outputs, inputs["attention_mask"])
+        embeddings.append(sentence_embedding.cpu())
+
+embeddings = torch.cat(embeddings, dim=0).numpy()
+
+# 6. Dimensionality reduction (t-SNE)
+tsne = TSNE(n_components=2, random_state=42, perplexity=5)
+reduced = tsne.fit_transform(embeddings)
+
+# 7. Plot clusters
+plt.figure(figsize=(8, 6))
+for i, label in enumerate(le.classes_):
+    idx = label_ids == i
+    plt.scatter(reduced[idx, 0], reduced[idx, 1], label=label, alpha=0.7)
+
+plt.title("Text sample clusters (MiniLMv2 + Mean Pooling)")
+plt.legend()
+plt.show()
